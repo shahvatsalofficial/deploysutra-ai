@@ -1,0 +1,58 @@
+[
+  {
+    "id": "DS-K8S-001",
+    "severity": "HIGH",
+    "title": "Public Service exposure",
+    "message": "Service type LoadBalancer may create public ingress; network policies and cloud ACLs are not validated",
+    "field": "spec.type",
+    "resource": "Service/demo/shop",
+    "source": "fixtures/k8s/stack-after.yaml",
+    "line": 47,
+    "lineConfidence": "exact",
+    "evidence": "static-rule",
+    "requirement": "Confirm intended audience; prefer ClusterIP behind a reviewed Ingress; verify firewall/ACLs.",
+    "status": "new"
+  },
+  {
+    "id": "DS-K8S-007",
+    "severity": "MEDIUM",
+    "title": "Mutable or untagged image",
+    "message": "Unpinned or latest container image",
+    "field": "spec.template.spec.containers.0.image",
+    "resource": "Deployment/demo/shop",
+    "source": "fixtures/k8s/stack-after.yaml",
+    "line": 20,
+    "lineConfidence": "exact",
+    "evidence": "static-rule",
+    "requirement": "Pin an immutable digest.",
+    "status": "new"
+  },
+  {
+    "id": "DS-K8S-012",
+    "severity": "HIGH",
+    "title": "Secret-like literal in env",
+    "message": "Env var DB_PASSWORD has an inline literal value (value withheld)",
+    "field": "spec.template.spec.containers.0.env.1.value",
+    "resource": "Deployment/demo/shop",
+    "source": "fixtures/k8s/stack-after.yaml",
+    "line": 25,
+    "lineConfidence": "exact",
+    "evidence": "static-rule",
+    "requirement": "Use valueFrom.secretKeyRef or an external secret store; rotate the exposed value.",
+    "status": "new"
+  },
+  {
+    "id": "DS-K8S-019",
+    "severity": "MEDIUM",
+    "title": "Resource removed from desired state",
+    "message": "ConfigMap/demo/legacy-flags exists BEFORE but not AFTER",
+    "field": "metadata.name",
+    "resource": "ConfigMap/demo/legacy-flags",
+    "source": "fixtures/k8s/stack-before.yaml",
+    "line": 86,
+    "lineConfidence": "exact",
+    "evidence": "static-rule",
+    "requirement": "Confirm deletion is intended and data is backed up",
+    "status": "new"
+  }
+]

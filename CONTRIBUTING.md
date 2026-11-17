@@ -1,0 +1,2 @@
+# Contributing
+Start with `npm test`, `npm run demo` and `docs/STATUS.md`. Create a focused issue with a synthetic fixture, expected rule ID, severity and source location. Do not paste credentials, production plans or kubeconfigs. Respect maintainer bandwidth and discuss new dependency, policy and runtime adapters before submitting them. PRs require actual test output and an explicit list of unsupported/untested hosts. Keep source code dependency-free where practical; new runtime tool integrations are opt-in and reviewed.

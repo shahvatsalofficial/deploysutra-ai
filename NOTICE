@@ -1,0 +1,10 @@
+DeploySutra AI
+Copyright 2026 Vatsal Shah
+
+Licensed under the Apache License, Version 2.0. See LICENSE.
+
+This product includes no third-party runtime code. It has no runtime dependencies.
+Product and company names mentioned in documentation (Kubernetes, Helm, Kustomize, OpenTofu, Terraform,
+Argo CD, Flux, Trivy, Cosign, OPA, Conftest, Claude Code, Cursor, Codex, Gemini, GitHub Copilot and others)
+are trademarks of their respective owners and are used for identification only. No affiliation or
+endorsement is implied. "DeploySutra" has not been trademark-searched; do not assume it is unique.

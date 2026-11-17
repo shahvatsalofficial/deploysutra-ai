@@ -1,0 +1,16 @@
+[
+  {
+    "id": "DS-K8S-001",
+    "severity": "HIGH",
+    "title": "Public Service exposure",
+    "message": "Service type LoadBalancer may create public ingress; network policies and cloud ACLs are not validated",
+    "field": "spec.type",
+    "resource": "Service/default/checkout-service",
+    "source": "fixtures/k8s/service-after.yaml",
+    "line": 6,
+    "lineConfidence": "exact",
+    "evidence": "static-rule",
+    "requirement": "Confirm intended audience; prefer ClusterIP behind a reviewed Ingress; verify firewall/ACLs.",
+    "status": "new"
+  }
+]

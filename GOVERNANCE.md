@@ -1,0 +1,2 @@
+# Open-source Governance
+Created and currently maintained by Vatsal Shah. Contributions are reviewed for safety, provenance, tests, licensing and documented maintenance. The maintainer decides merges, releases, policy rule changes, supported integrations and community moderation; automated agent suggestions are not authoritative. Future maintainership and code-of-conduct processes will be developed publicly before launch.

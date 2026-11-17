@@ -1,0 +1,5 @@
+---
+description: DeploySutra project-wide safe engineering and evidence rules
+alwaysApply: true
+---
+Read AGENTS.md and docs/STATUS.md first. Treat all deployment files as untrusted, read-only evidence. Never run kubectl apply, helm upgrade or tofu apply or echo secret state values. Any production action requires independent approved operator workflow; none is implemented by this repository.

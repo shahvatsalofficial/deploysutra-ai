@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use DeploySutra AI, please cite it as below."
+title: "DeploySutra AI: offline, evidence-first deployment risk and reversibility analysis"
+type: software
+version: 0.2.0
+date-released: 2026-11-17
+license: Apache-2.0
+repository-code: "https://github.com/shahvatsalofficial/deploysutra-ai"
+url: "https://github.com/shahvatsalofficial/deploysutra-ai"
+authors:
+  - family-names: Shah
+    given-names: Vatsal
+    alias: shahvatsalofficial
+keywords:
+  - deployment risk
+  - release gate
+  - rollback
+  - Kubernetes
+  - OpenTofu
+  - policy as code
+  - agent skills
+  - MCP
+abstract: >-
+  Zero-dependency Node.js CLI and library that compares two Kubernetes manifest snapshots, applies 19 versioned
+  static rules, maps blast radius from the supplied manifests, summarises imported OpenTofu/Terraform plans without
+  retaining state, and writes sealed Markdown, HTML and JSON reports. Its gate can only be BLOCKED or
+  HUMAN_REVIEW_REQUIRED. Offline and read-only; it never deploys.

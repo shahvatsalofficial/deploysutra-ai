@@ -1,0 +1,230 @@
+{
+  "schemaVersion": "1.0",
+  "product": "DeploySutra AI",
+  "creator": "Vatsal Shah",
+  "agentRoles": 20,
+  "portableSkills": 25,
+  "roleDefinitions": [
+    {
+      "id": "deploysutra-prime",
+      "name": "DeploySutra Prime",
+      "kind": "specialist",
+      "summary": "Plan the review, pick the narrowest specialist for each question, stop on missing evidence and hand the human a gate decision.",
+      "skillPath": "skills/deploysutra-prime/SKILL.md",
+      "claudePath": ".claude/agents/deploysutra-prime.md",
+      "executionStatus": "INSTRUCTIONS_AUTHORED_NOT_AUTONOMOUS"
+    },
+    {
+      "id": "deploysutra-environment-atlas",
+      "name": "Environment Atlas",
+      "kind": "specialist",
+      "summary": "Record which environment and namespace each supplied file claims to describe, so a diff is never read against the wrong target.",
+      "skillPath": "skills/deploysutra-environment-atlas/SKILL.md",
+      "claudePath": ".claude/agents/deploysutra-environment-atlas.md",
+      "executionStatus": "INSTRUCTIONS_AUTHORED_NOT_AUTONOMOUS"
+    },
+    {
+      "id": "deploysutra-kubernetes-mapper",
+      "name": "Kubernetes Mapper",
+      "kind": "specialist",
+      "summary": "Explain how the supplied Kubernetes objects relate (Service to workload, Ingress to Service, workload to ConfigMap/Secret/PVC/ServiceAccount).",
+      "skillPath": "skills/deploysutra-kubernetes-mapper/SKILL.md",
+      "claudePath": ".claude/agents/deploysutra-kubernetes-mapper.md",
+      "executionStatus": "INSTRUCTIONS_AUTHORED_NOT_AUTONOMOUS"
+    },
+    {
+      "id": "deploysutra-diff-sentinel",
+      "name": "Diff Sentinel",
+      "kind": "specialist",
+      "summary": "Own the semantic desired-state diff: every changed field with source line, risk class and redaction.",
+      "skillPath": "skills/deploysutra-diff-sentinel/SKILL.md",
+      "claudePath": ".claude/agents/deploysutra-diff-sentinel.md",
+      "executionStatus": "INSTRUCTIONS_AUTHORED_NOT_AUTONOMOUS"
+    },
+    {
+      "id": "deploysutra-public-exposure-guard",
+      "name": "Public Exposure Guard",
+      "kind": "specialist",
+      "summary": "Judge whether a change could make a workload reachable from outside the cluster, and say how to verify it.",
+      "skillPath": "skills/deploysutra-public-exposure-guard/SKILL.md",
+      "claudePath": ".claude/agents/deploysutra-public-exposure-guard.md",
+      "executionStatus": "INSTRUCTIONS_AUTHORED_NOT_AUTONOMOUS"
+    },
+    {
+      "id": "deploysutra-workload-security",
+      "name": "Workload Security",
+      "kind": "specialist",
+      "summary": "Review pod/container isolation settings for privilege, root, capabilities, host namespaces and mutable images.",
+      "skillPath": "skills/deploysutra-workload-security/SKILL.md",
+      "claudePath": ".claude/agents/deploysutra-workload-security.md",
+      "executionStatus": "INSTRUCTIONS_AUTHORED_NOT_AUTONOMOUS"
+    },
+    {
+      "id": "deploysutra-rbac-guardian",
+      "name": "RBAC Guardian",
+      "kind": "specialist",
+      "summary": "Review Roles, ClusterRoles and bindings for wildcards, Secret access and cluster scope.",
+      "skillPath": "skills/deploysutra-rbac-guardian/SKILL.md",
+      "claudePath": ".claude/agents/deploysutra-rbac-guardian.md",
+      "executionStatus": "INSTRUCTIONS_AUTHORED_NOT_AUTONOMOUS"
+    },
+    {
+      "id": "deploysutra-secret-boundary",
+      "name": "Secret Boundary",
+      "kind": "specialist",
+      "summary": "Keep credentials out of manifests, reports and logs; verify redaction before any report is shared.",
+      "skillPath": "skills/deploysutra-secret-boundary/SKILL.md",
+      "claudePath": ".claude/agents/deploysutra-secret-boundary.md",
+      "executionStatus": "INSTRUCTIONS_AUTHORED_NOT_AUTONOMOUS"
+    },
+    {
+      "id": "deploysutra-iac-interpreter",
+      "name": "IaC Interpreter",
+      "kind": "specialist",
+      "summary": "Summarise an imported OpenTofu/Terraform plan JSON as action counts per resource type with destructive and replace candidates.",
+      "skillPath": "skills/deploysutra-iac-interpreter/SKILL.md",
+      "claudePath": ".claude/agents/deploysutra-iac-interpreter.md",
+      "executionStatus": "INSTRUCTIONS_AUTHORED_NOT_AUTONOMOUS"
+    },
+    {
+      "id": "deploysutra-drift-witness",
+      "name": "Drift Witness",
+      "kind": "specialist",
+      "summary": "Keep \"desired-state difference\" separate from \"live drift\" and say what evidence real drift detection would need.",
+      "skillPath": "skills/deploysutra-drift-witness/SKILL.md",
+      "claudePath": ".claude/agents/deploysutra-drift-witness.md",
+      "executionStatus": "INSTRUCTIONS_AUTHORED_NOT_AUTONOMOUS"
+    },
+    {
+      "id": "deploysutra-blast-radius",
+      "name": "Blast Radius",
+      "kind": "specialist",
+      "summary": "Turn changes into explicit questions and connected resources, marking everything unproven as UNKNOWN.",
+      "skillPath": "skills/deploysutra-blast-radius/SKILL.md",
+      "claudePath": ".claude/agents/deploysutra-blast-radius.md",
+      "executionStatus": "INSTRUCTIONS_AUTHORED_NOT_AUTONOMOUS"
+    },
+    {
+      "id": "deploysutra-policy-judge",
+      "name": "Policy Judge",
+      "kind": "specialist",
+      "summary": "Own the rule registry: explain, justify, tune profiles and keep rule IDs stable.",
+      "skillPath": "skills/deploysutra-policy-judge/SKILL.md",
+      "claudePath": ".claude/agents/deploysutra-policy-judge.md",
+      "executionStatus": "INSTRUCTIONS_AUTHORED_NOT_AUTONOMOUS"
+    },
+    {
+      "id": "deploysutra-resource-budget",
+      "name": "Resource Budget",
+      "kind": "specialist",
+      "summary": "Review CPU/memory limits and requests and replica changes for capacity risk.",
+      "skillPath": "skills/deploysutra-resource-budget/SKILL.md",
+      "claudePath": ".claude/agents/deploysutra-resource-budget.md",
+      "executionStatus": "INSTRUCTIONS_AUTHORED_NOT_AUTONOMOUS"
+    },
+    {
+      "id": "deploysutra-rollout-planner",
+      "name": "Rollout Planner",
+      "kind": "specialist",
+      "summary": "Draft a human-run rollout order and abort criteria from the change set. Plans only; never executes.",
+      "skillPath": "skills/deploysutra-rollout-planner/SKILL.md",
+      "claudePath": ".claude/agents/deploysutra-rollout-planner.md",
+      "executionStatus": "INSTRUCTIONS_AUTHORED_NOT_AUTONOMOUS"
+    },
+    {
+      "id": "deploysutra-canary-evidence",
+      "name": "Canary Evidence",
+      "kind": "specialist",
+      "summary": "Define what canary/SLO evidence would be required, and refuse to treat absent metrics as healthy.",
+      "skillPath": "skills/deploysutra-canary-evidence/SKILL.md",
+      "claudePath": ".claude/agents/deploysutra-canary-evidence.md",
+      "executionStatus": "INSTRUCTIONS_AUTHORED_NOT_AUTONOMOUS"
+    },
+    {
+      "id": "deploysutra-rollback-architect",
+      "name": "Rollback Architect",
+      "kind": "specialist",
+      "summary": "Separate rollback declarations from verified restore evidence; keep the gate blocked until evidence exists.",
+      "skillPath": "skills/deploysutra-rollback-architect/SKILL.md",
+      "claudePath": ".claude/agents/deploysutra-rollback-architect.md",
+      "executionStatus": "INSTRUCTIONS_AUTHORED_NOT_AUTONOMOUS"
+    },
+    {
+      "id": "deploysutra-health-gate",
+      "name": "Health Gate",
+      "kind": "specialist",
+      "summary": "Hold the gate closed: only BLOCKED or HUMAN_REVIEW_REQUIRED exist, and neither is an approval.",
+      "skillPath": "skills/deploysutra-health-gate/SKILL.md",
+      "claudePath": ".claude/agents/deploysutra-health-gate.md",
+      "executionStatus": "INSTRUCTIONS_AUTHORED_NOT_AUTONOMOUS"
+    },
+    {
+      "id": "deploysutra-compliance-witness",
+      "name": "Compliance Witness",
+      "kind": "specialist",
+      "summary": "Prepare auditable evidence: hashes, rule versions, verification steps and honest limits.",
+      "skillPath": "skills/deploysutra-compliance-witness/SKILL.md",
+      "claudePath": ".claude/agents/deploysutra-compliance-witness.md",
+      "executionStatus": "INSTRUCTIONS_AUTHORED_NOT_AUTONOMOUS"
+    },
+    {
+      "id": "deploysutra-ide-bridge",
+      "name": "IDE Bridge",
+      "kind": "specialist",
+      "summary": "Install the portable skills into a project for a chosen IDE and report honestly that activation is untested.",
+      "skillPath": "skills/deploysutra-ide-bridge/SKILL.md",
+      "claudePath": ".claude/agents/deploysutra-ide-bridge.md",
+      "executionStatus": "INSTRUCTIONS_AUTHORED_NOT_AUTONOMOUS"
+    },
+    {
+      "id": "deploysutra-release-auditor",
+      "name": "Release Auditor",
+      "kind": "specialist",
+      "summary": "Independently challenge the review: re-run, check evidence, look for overclaims.",
+      "skillPath": "skills/deploysutra-release-auditor/SKILL.md",
+      "claudePath": ".claude/agents/deploysutra-release-auditor.md",
+      "executionStatus": "INSTRUCTIONS_AUTHORED_NOT_AUTONOMOUS"
+    },
+    {
+      "id": "deploysutra-deploy-diff",
+      "name": "deploy-diff",
+      "kind": "capability",
+      "summary": "Compare bounded local before and after manifests and explain sources and changed fields.",
+      "skillPath": "skills/deploysutra-deploy-diff/SKILL.md",
+      "executionStatus": "SKILL_AUTHORED_HOST_ACTIVATION_UNVERIFIED"
+    },
+    {
+      "id": "deploysutra-iac-sanity",
+      "name": "iac-sanity",
+      "kind": "capability",
+      "summary": "Review imported plan action summaries and reject secret echoing and unsupported formats.",
+      "skillPath": "skills/deploysutra-iac-sanity/SKILL.md",
+      "executionStatus": "SKILL_AUTHORED_HOST_ACTIVATION_UNVERIFIED"
+    },
+    {
+      "id": "deploysutra-preview-environment",
+      "name": "preview-environment",
+      "kind": "capability",
+      "summary": "Draft controlled pre-deployment review steps without contacting or modifying remote infrastructure.",
+      "skillPath": "skills/deploysutra-preview-environment/SKILL.md",
+      "executionStatus": "SKILL_AUTHORED_HOST_ACTIVATION_UNVERIFIED"
+    },
+    {
+      "id": "deploysutra-rollout-guard",
+      "name": "rollout-guard",
+      "kind": "capability",
+      "summary": "Audit static rollout risks, permissions and health evidence before human-controlled release.",
+      "skillPath": "skills/deploysutra-rollout-guard/SKILL.md",
+      "executionStatus": "SKILL_AUTHORED_HOST_ACTIVATION_UNVERIFIED"
+    },
+    {
+      "id": "deploysutra-rollback-plan",
+      "name": "rollback-plan",
+      "kind": "capability",
+      "summary": "List rollback prerequisites and separate declarations from independently verified restoration evidence.",
+      "skillPath": "skills/deploysutra-rollback-plan/SKILL.md",
+      "executionStatus": "SKILL_AUTHORED_HOST_ACTIVATION_UNVERIFIED"
+    }
+  ],
+  "operatingMode": "HUMAN_CONTROLLED_READ_ONLY_BY_DEFAULT"
+}

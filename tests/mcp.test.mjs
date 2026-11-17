@@ -1,0 +1,25 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {respond, TOOLS, resolveInRoot} from '../packages/server/mcp.mjs';
+
+const root = path.resolve(fileURLToPath(new URL('../', import.meta.url)));
+const call = (name, args) => { const r = respond(root, {jsonrpc: '2.0', id: 1, method: 'tools/call', params: {name, arguments: args}}); return {isError: r.result.isError, body: r.result.content[0].text}; };
+test('initialize negotiates protocol and names the server', () => { const r = respond(root, {jsonrpc: '2.0', id: 1, method: 'initialize', params: {protocolVersion: '2025-06-18'}}); assert.equal(r.result.protocolVersion, '2025-06-18'); assert.equal(r.result.serverInfo.name, 'deploysutra'); });
+test('tools/list exposes only the six read-only tools', () => { const names = respond(root, {jsonrpc: '2.0', id: 1, method: 'tools/list'}).result.tools.map(t => t.name); assert.deepEqual([...names].sort(), ['compare_manifests', 'explain_policy', 'list_policies', 'list_rollback_gaps', 'summarize_plan_actions', 'verify_evidence']); });
+test('every tool schema forbids extra properties', () => assert(TOOLS.every(t => t.inputSchema.additionalProperties === false)));
+test('no tool name suggests a write action', () => assert(!TOOLS.some(t => /apply|deploy|delete|exec|write/.test(t.name))));
+test('notifications get no response', () => assert.equal(respond(root, {jsonrpc: '2.0', method: 'notifications/initialized'}), null));
+test('invalid request and unknown method', () => { assert.equal(respond(root, {}).error.code, -32600); assert.equal(respond(root, {jsonrpc: '2.0', id: 2, method: 'nope'}).error.code, -32601); });
+test('unknown tool is a protocol error', () => assert.equal(respond(root, {jsonrpc: '2.0', id: 3, method: 'tools/call', params: {name: 'apply'}}).error.code, -32602));
+test('compare_manifests returns BLOCKED with reasons and no approval', () => { const r = call('compare_manifests', {before: 'fixtures/k8s/before.yaml', after: 'fixtures/k8s/after.yaml'}); assert(!r.isError); const j = JSON.parse(r.body); assert.equal(j.gate, 'BLOCKED'); assert(j.gateReasons.length); assert(j.findings.some(f => f.id === 'DS-K8S-004')); });
+test('compare_manifests validates profile', () => { assert(!call('compare_manifests', {before: 'fixtures/k8s/hardened.yaml', after: 'fixtures/k8s/hardened.yaml', profile: 'production'}).isError); assert(call('compare_manifests', {before: 'fixtures/k8s/hardened.yaml', after: 'fixtures/k8s/hardened.yaml', profile: 'bad'}).isError); });
+test('path traversal, absolute paths and null bytes are refused', () => { for (const p of ['../package.json', '../../etc/passwd', path.resolve(root, 'package.json'), 'fixtures/\0x']) assert(call('compare_manifests', {before: p, after: 'fixtures/k8s/after.yaml'}).isError, p); });
+test('resolveInRoot keeps paths inside the root', () => { assert.throws(() => resolveInRoot(root, '..'), /escapes/); assert(resolveInRoot(root, 'fixtures').startsWith(fs.realpathSync(root))); });
+test('explain_policy returns rule and rejects bad ids', () => { assert.equal(JSON.parse(call('explain_policy', {id: 'DS-K8S-014'}).body).severity, 'HIGH'); assert(call('explain_policy', {id: 'DS-K8S-999'}).isError); });
+test('list_policies lists 19 rules and 3 profiles', () => { const j = JSON.parse(call('list_policies', {}).body); assert.equal(j.rules.length, 19); assert.equal(Object.keys(j.profiles).length, 3); });
+test('summarize_plan_actions never returns state values', () => { const r = call('summarize_plan_actions', {plan: 'fixtures/tofu/destructive-plan.json'}); assert(!r.isError); assert(!r.body.includes('TOP_SECRET')); assert.equal(JSON.parse(r.body).gate, 'BLOCKED'); });
+test('list_rollback_gaps without evidence: nothing ready', () => { const j = JSON.parse(call('list_rollback_gaps', {}).body); assert.equal(j.ready, false); assert(j.checks.every(c => c.status === 'MISSING')); });
+test('verify_evidence detects tampering', () => { const good = fs.readFileSync(path.join(root, 'examples/reports/demo/deploy-readiness.json'), 'utf8'); assert.equal(JSON.parse(call('verify_evidence', {report: good}).body).verified, true); const bad = JSON.parse(good); bad.gate = 'READY'; assert.equal(JSON.parse(call('verify_evidence', {report: JSON.stringify(bad)}).body).verified, false); assert(call('verify_evidence', {report: 'not json'}).isError); });

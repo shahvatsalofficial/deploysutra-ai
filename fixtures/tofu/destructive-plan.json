@@ -1,0 +1,1 @@
+{"format_version":"1.2","resource_changes":[{"address":"aws_security_group.demo","type":"aws_security_group","change":{"actions":["update"],"before":{"password":"TOP_SECRET_NEVER_REPORT"},"after":{"password":"OTHER_SECRET_NEVER_REPORT"}}},{"address":"aws_db_instance.demo","type":"aws_db_instance","change":{"actions":["delete","create"]}}]}

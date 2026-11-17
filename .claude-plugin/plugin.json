@@ -1,0 +1,8 @@
+{
+  "name": "deploysutra",
+  "version": "0.2.0",
+  "description": "Human-controlled, offline-first deployment risk analysis and specialist guidance",
+  "author": {
+    "name": "Vatsal Shah"
+  }
+}

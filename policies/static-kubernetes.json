@@ -1,0 +1,51 @@
+{
+  "version": "1.0",
+  "execution": "STATIC_ONLY",
+  "kubernetes": [
+    {
+      "id": "DS-K8S-001",
+      "title": "Public Service exposure"
+    },
+    {
+      "id": "DS-K8S-002",
+      "title": "Wildcard Ingress"
+    },
+    {
+      "id": "DS-K8S-003",
+      "title": "Host networking"
+    },
+    {
+      "id": "DS-K8S-004",
+      "title": "Privileged container"
+    },
+    {
+      "id": "DS-K8S-005",
+      "title": "Privilege escalation"
+    },
+    {
+      "id": "DS-K8S-006",
+      "title": "Root UID"
+    },
+    {
+      "id": "DS-K8S-007",
+      "title": "Unpinned image"
+    },
+    {
+      "id": "DS-K8S-008",
+      "title": "Missing limits"
+    },
+    {
+      "id": "DS-K8S-009",
+      "title": "Scaled to zero"
+    },
+    {
+      "id": "DS-K8S-010",
+      "title": "Wildcard RBAC"
+    },
+    {
+      "id": "DS-K8S-011",
+      "title": "Cluster role binding"
+    }
+  ],
+  "note": "Authoritative implementation is versioned static rule engine in packages/core; map policy IDs to tests."
+}

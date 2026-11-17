@@ -1,0 +1,7 @@
+{
+  "previousRevision": "release-123",
+  "backupVerified": false,
+  "restoreTestPassed": false,
+  "rollbackProcedure": "documented manual procedure",
+  "operatorApprovalVerified": false
+}

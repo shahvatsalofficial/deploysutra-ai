@@ -1,0 +1,470 @@
+{
+  "schemaVersion": "2.0",
+  "product": "DeploySutra AI",
+  "productVersion": "0.2.0",
+  "rulesVersion": "2.0",
+  "scope": "OFFLINE_STATIC_K8S",
+  "profile": {
+    "name": "production",
+    "selection": "explicit",
+    "blockOn": [
+      "HIGH",
+      "MEDIUM"
+    ]
+  },
+  "source": {
+    "before": {
+      "path": "fixtures/k8s/stack-before.yaml",
+      "sha256": "1fdd33e2d4c3bf5d201ccbd416e34043b90bb207e12715a569b68cab5026db80",
+      "bytes": 1761
+    },
+    "after": {
+      "path": "fixtures/k8s/stack-after.yaml",
+      "sha256": "762ced65bd65d2a25e565ab72a3998fe9aafc51428041b030f3569c03b0d816b",
+      "bytes": 1539
+    }
+  },
+  "identity": null,
+  "resourceCounts": {
+    "before": 5,
+    "after": 4,
+    "added": 0,
+    "removed": 1,
+    "changed": 3
+  },
+  "resources": [
+    {
+      "resource": "ConfigMap/demo/legacy-flags",
+      "status": "removed"
+    },
+    {
+      "resource": "ConfigMap/demo/shop-config",
+      "status": "changed",
+      "diffCount": 1
+    },
+    {
+      "resource": "Deployment/demo/shop",
+      "status": "changed",
+      "diffCount": 5
+    },
+    {
+      "resource": "Ingress/demo/shop",
+      "status": "unchanged",
+      "diffCount": 0
+    },
+    {
+      "resource": "Service/demo/shop",
+      "status": "changed",
+      "diffCount": 1
+    }
+  ],
+  "diffs": [
+    {
+      "id": "DS-DIFF-d0a80af25",
+      "resource": "Deployment/demo/shop",
+      "path": "spec.template.spec.containers[shop].env[DB_PASSWORD].value",
+      "label": "spec.template.spec.containers[shop].env[DB_PASSWORD].value",
+      "risk": "other",
+      "change": "added",
+      "before": "[redacted]",
+      "after": "[redacted]",
+      "redacted": true,
+      "source": "fixtures/k8s/stack-after.yaml",
+      "line": 25,
+      "lineConfidence": "exact",
+      "evidence": "static-manifest-diff",
+      "scope": "desired-state-only"
+    },
+    {
+      "id": "DS-DIFF-ce2361a2b",
+      "resource": "Deployment/demo/shop",
+      "path": "spec.template.spec.containers[shop].env[DB_PASSWORD].valueFrom.secretKeyRef.key",
+      "label": "spec.template.spec.containers[shop].env[DB_PASSWORD].valueFrom.secretKeyRef.key",
+      "risk": "other",
+      "change": "removed",
+      "before": "password",
+      "after": "[absent]",
+      "redacted": false,
+      "source": "fixtures/k8s/stack-before.yaml",
+      "line": 28,
+      "lineConfidence": "exact",
+      "evidence": "static-manifest-diff",
+      "scope": "desired-state-only"
+    },
+    {
+      "id": "DS-DIFF-ee56b7e71",
+      "resource": "Deployment/demo/shop",
+      "path": "spec.template.spec.containers[shop].env[DB_PASSWORD].valueFrom.secretKeyRef.name",
+      "label": "spec.template.spec.containers[shop].env[DB_PASSWORD].valueFrom.secretKeyRef.name",
+      "risk": "other",
+      "change": "removed",
+      "before": "shop-db",
+      "after": "[absent]",
+      "redacted": false,
+      "source": "fixtures/k8s/stack-before.yaml",
+      "line": 27,
+      "lineConfidence": "exact",
+      "evidence": "static-manifest-diff",
+      "scope": "desired-state-only"
+    },
+    {
+      "id": "DS-DIFF-6aebe9c3d",
+      "resource": "Deployment/demo/shop",
+      "path": "spec.template.spec.containers[shop].env[LOG_LEVEL].value",
+      "label": "spec.template.spec.containers[shop].env[LOG_LEVEL].value",
+      "risk": "other",
+      "change": "changed",
+      "before": "info",
+      "after": "debug",
+      "redacted": false,
+      "source": "fixtures/k8s/stack-after.yaml",
+      "line": 23,
+      "lineConfidence": "exact",
+      "evidence": "static-manifest-diff",
+      "scope": "desired-state-only"
+    },
+    {
+      "id": "DS-DIFF-e413d231b",
+      "resource": "Deployment/demo/shop",
+      "path": "spec.template.spec.containers[shop].image",
+      "label": "container image",
+      "risk": "image",
+      "change": "changed",
+      "before": "registry.example.com/shop@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "after": "registry.example.com/shop:latest",
+      "redacted": false,
+      "source": "fixtures/k8s/stack-after.yaml",
+      "line": 20,
+      "lineConfidence": "exact",
+      "evidence": "static-manifest-diff",
+      "scope": "desired-state-only"
+    },
+    {
+      "id": "DS-DIFF-52a0ccd1e",
+      "resource": "Service/demo/shop",
+      "path": "spec.type",
+      "label": "service exposure",
+      "risk": "exposure",
+      "change": "changed",
+      "before": "ClusterIP",
+      "after": "LoadBalancer",
+      "redacted": false,
+      "source": "fixtures/k8s/stack-after.yaml",
+      "line": 47,
+      "lineConfidence": "exact",
+      "evidence": "static-manifest-diff",
+      "scope": "desired-state-only"
+    },
+    {
+      "id": "DS-DIFF-b3c66f335",
+      "resource": "ConfigMap/demo/shop-config",
+      "path": "data.FEATURE_X",
+      "label": "data.FEATURE_X",
+      "risk": "other",
+      "change": "changed",
+      "before": "off",
+      "after": "on",
+      "redacted": false,
+      "source": "fixtures/k8s/stack-after.yaml",
+      "line": 78,
+      "lineConfidence": "exact",
+      "evidence": "static-manifest-diff",
+      "scope": "desired-state-only"
+    },
+    {
+      "id": "DS-DIFF-3124b5ee7",
+      "resource": "ConfigMap/demo/legacy-flags",
+      "path": "(resource)",
+      "label": "resource removed",
+      "risk": "other",
+      "change": "resource-removed",
+      "before": "[present]",
+      "after": "[absent]",
+      "redacted": false,
+      "source": "fixtures/k8s/stack-before.yaml",
+      "line": 84,
+      "lineConfidence": "exact",
+      "evidence": "static-manifest-diff",
+      "scope": "desired-state-only"
+    }
+  ],
+  "policyFindings": [
+    {
+      "id": "DS-K8S-001",
+      "severity": "HIGH",
+      "title": "Public Service exposure",
+      "message": "Service type LoadBalancer may create public ingress; network policies and cloud ACLs are not validated",
+      "field": "spec.type",
+      "resource": "Service/demo/shop",
+      "source": "fixtures/k8s/stack-after.yaml",
+      "line": 47,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Confirm intended audience; prefer ClusterIP behind a reviewed Ingress; verify firewall/ACLs.",
+      "status": "new"
+    },
+    {
+      "id": "DS-K8S-007",
+      "severity": "MEDIUM",
+      "title": "Mutable or untagged image",
+      "message": "Unpinned or latest container image",
+      "field": "spec.template.spec.containers.0.image",
+      "resource": "Deployment/demo/shop",
+      "source": "fixtures/k8s/stack-after.yaml",
+      "line": 20,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Pin an immutable digest.",
+      "status": "new"
+    },
+    {
+      "id": "DS-K8S-012",
+      "severity": "HIGH",
+      "title": "Secret-like literal in env",
+      "message": "Env var DB_PASSWORD has an inline literal value (value withheld)",
+      "field": "spec.template.spec.containers.0.env.1.value",
+      "resource": "Deployment/demo/shop",
+      "source": "fixtures/k8s/stack-after.yaml",
+      "line": 25,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Use valueFrom.secretKeyRef or an external secret store; rotate the exposed value.",
+      "status": "new"
+    },
+    {
+      "id": "DS-K8S-019",
+      "severity": "MEDIUM",
+      "title": "Resource removed from desired state",
+      "message": "ConfigMap/demo/legacy-flags exists BEFORE but not AFTER",
+      "field": "metadata.name",
+      "resource": "ConfigMap/demo/legacy-flags",
+      "source": "fixtures/k8s/stack-before.yaml",
+      "line": 86,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Confirm deletion is intended and data is backed up",
+      "status": "new"
+    }
+  ],
+  "newPolicyFindings": [
+    {
+      "id": "DS-K8S-001",
+      "severity": "HIGH",
+      "title": "Public Service exposure",
+      "message": "Service type LoadBalancer may create public ingress; network policies and cloud ACLs are not validated",
+      "field": "spec.type",
+      "resource": "Service/demo/shop",
+      "source": "fixtures/k8s/stack-after.yaml",
+      "line": 47,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Confirm intended audience; prefer ClusterIP behind a reviewed Ingress; verify firewall/ACLs.",
+      "status": "new"
+    },
+    {
+      "id": "DS-K8S-007",
+      "severity": "MEDIUM",
+      "title": "Mutable or untagged image",
+      "message": "Unpinned or latest container image",
+      "field": "spec.template.spec.containers.0.image",
+      "resource": "Deployment/demo/shop",
+      "source": "fixtures/k8s/stack-after.yaml",
+      "line": 20,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Pin an immutable digest.",
+      "status": "new"
+    },
+    {
+      "id": "DS-K8S-012",
+      "severity": "HIGH",
+      "title": "Secret-like literal in env",
+      "message": "Env var DB_PASSWORD has an inline literal value (value withheld)",
+      "field": "spec.template.spec.containers.0.env.1.value",
+      "resource": "Deployment/demo/shop",
+      "source": "fixtures/k8s/stack-after.yaml",
+      "line": 25,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Use valueFrom.secretKeyRef or an external secret store; rotate the exposed value.",
+      "status": "new"
+    },
+    {
+      "id": "DS-K8S-019",
+      "severity": "MEDIUM",
+      "title": "Resource removed from desired state",
+      "message": "ConfigMap/demo/legacy-flags exists BEFORE but not AFTER",
+      "field": "metadata.name",
+      "resource": "ConfigMap/demo/legacy-flags",
+      "source": "fixtures/k8s/stack-before.yaml",
+      "line": 86,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Confirm deletion is intended and data is backed up",
+      "status": "new"
+    }
+  ],
+  "persistentPolicyFindings": [],
+  "blastMap": {
+    "nodes": [
+      {
+        "id": "ConfigMap/demo/shop-config",
+        "kind": "ConfigMap",
+        "status": "SUPPLIED"
+      },
+      {
+        "id": "Deployment/demo/shop",
+        "kind": "Deployment",
+        "status": "SUPPLIED"
+      },
+      {
+        "id": "Ingress/demo/shop",
+        "kind": "Ingress",
+        "status": "SUPPLIED"
+      },
+      {
+        "id": "Service/demo/shop",
+        "kind": "Service",
+        "status": "SUPPLIED"
+      },
+      {
+        "id": "ServiceAccount/demo/shop",
+        "kind": "ServiceAccount",
+        "status": "UNKNOWN",
+        "note": "Referenced but not in the supplied manifests; ownership and state unknown"
+      }
+    ],
+    "edges": [
+      {
+        "from": "Deployment/demo/shop",
+        "to": "ConfigMap/demo/shop-config",
+        "relation": "reads-config",
+        "certainty": "declared-in-manifests"
+      },
+      {
+        "from": "Deployment/demo/shop",
+        "to": "ServiceAccount/demo/shop",
+        "relation": "runs-as",
+        "certainty": "declared-target-not-supplied"
+      },
+      {
+        "from": "Ingress/demo/shop",
+        "to": "Service/demo/shop",
+        "relation": "routes-to",
+        "certainty": "declared-in-manifests"
+      },
+      {
+        "from": "Service/demo/shop",
+        "to": "Deployment/demo/shop",
+        "relation": "routes-to",
+        "certainty": "selector-matches-pod-template-labels"
+      }
+    ]
+  },
+  "impactedByChange": [
+    {
+      "changed": "Deployment/demo/shop",
+      "affected": "ConfigMap/demo/shop-config",
+      "relation": "this reads-config ConfigMap",
+      "certainty": "declared-in-manifests"
+    },
+    {
+      "changed": "Deployment/demo/shop",
+      "affected": "ServiceAccount/demo/shop",
+      "relation": "this runs-as ServiceAccount",
+      "certainty": "declared-target-not-supplied"
+    },
+    {
+      "changed": "Deployment/demo/shop",
+      "affected": "Service/demo/shop",
+      "relation": "Service routes-to this",
+      "certainty": "selector-matches-pod-template-labels"
+    },
+    {
+      "changed": "Service/demo/shop",
+      "affected": "Ingress/demo/shop",
+      "relation": "Ingress routes-to this",
+      "certainty": "declared-in-manifests"
+    },
+    {
+      "changed": "Service/demo/shop",
+      "affected": "Deployment/demo/shop",
+      "relation": "this routes-to Deployment",
+      "certainty": "selector-matches-pod-template-labels"
+    },
+    {
+      "changed": "ConfigMap/demo/shop-config",
+      "affected": "Deployment/demo/shop",
+      "relation": "Deployment reads-config this",
+      "certainty": "declared-in-manifests"
+    }
+  ],
+  "blastRadius": [
+    "Workload image changed: check health signals, compatibility, and rollout readiness",
+    "Service exposure changed: review traffic/security blast radius",
+    "High-risk static rule triggered; deployment approval must remain blocked"
+  ],
+  "rollback": {
+    "source": "not supplied",
+    "checks": [
+      {
+        "id": "prior_revision",
+        "status": "MISSING",
+        "description": "Evidence of known previous deployable revision"
+      },
+      {
+        "id": "backup_verified",
+        "status": "MISSING",
+        "description": "Independent backup validity evidence"
+      },
+      {
+        "id": "restore_test",
+        "status": "MISSING",
+        "description": "Actual successful restore test evidence"
+      },
+      {
+        "id": "rollback_procedure",
+        "status": "MISSING",
+        "description": "Documented rollback sequence"
+      },
+      {
+        "id": "operator_approval",
+        "status": "MISSING",
+        "description": "Independent authorized operator approval evidence"
+      }
+    ],
+    "ready": false,
+    "reason": "Rollback readiness is not established by declarations alone; a restore drill and human sign-off are required"
+  },
+  "gate": "BLOCKED",
+  "gateReasons": [
+    "New HIGH finding DS-K8S-001 on Service/demo/shop",
+    "New MEDIUM finding DS-K8S-007 on Deployment/demo/shop",
+    "New HIGH finding DS-K8S-012 on Deployment/demo/shop",
+    "New MEDIUM finding DS-K8S-019 on ConfigMap/demo/legacy-flags",
+    "Rollback evidence missing: prior_revision, backup_verified, restore_test, rollback_procedure, operator_approval"
+  ],
+  "checks": {
+    "manifestParsing": "VERIFIED_STATIC",
+    "policyRules": "VERIFIED_STATIC",
+    "environmentDrift": "NOT_TESTED",
+    "liveRBAC": "NOT_TESTED",
+    "clusterDryRun": "NOT_RUN",
+    "workloadHealth": "NOT_RUN",
+    "realRollback": "NOT_RUN",
+    "humanApproval": "NOT_VERIFIED"
+  },
+  "limitations": [
+    "This compares two local desired-state snapshots, not observed live drift.",
+    "The built-in YAML parser supports a strict subset (no anchors, tags, templates, block scalars or nested flow collections); unsupported syntax fails loudly.",
+    "Policy checks are heuristic static rules, not authoritative validation, admission control or compliance certification.",
+    "Admission mutation, defaulting, controllers, image tag drift and real traffic exposure are not modelled.",
+    "Dependency edges come only from the supplied manifests; anything else is reported UNKNOWN.",
+    "No Kubernetes/cloud connection, deployment, destructive command, or rollback was executed."
+  ],
+  "integrity": {
+    "algorithm": "SHA-256",
+    "digest": "36477c2b00e7396a7f61321239169f5d6e84f4c9037abdf9fed7532a841f6e94",
+    "meaning": "Unkeyed integrity checksum, NOT a signature or proof of authenticity"
+  }
+}

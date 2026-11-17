@@ -1,0 +1,100 @@
+# DeploySutra AI - Kubernetes desired-state review
+
+**Gate:** BLOCKED (NEVER an authorization to deploy)  
+Do not proceed until every reason below is resolved or consciously accepted by a human operator.
+
+## Why
+
+- New HIGH finding DS-K8S-001 on Service/demo/shop
+- New MEDIUM finding DS-K8S-007 on Deployment/demo/shop
+- New HIGH finding DS-K8S-012 on Deployment/demo/shop
+- New MEDIUM finding DS-K8S-019 on ConfigMap/demo/legacy-flags
+- Rollback evidence missing: prior_revision, backup_verified, restore_test, rollback_procedure, operator_approval
+
+**Profile:** production (explicit; blocks on HIGH, MEDIUM)  
+**Resources:** 5 before, 4 after (0 added, 1 removed, 3 changed)  
+**Source before:** fixtures/k8s/stack-before.yaml (sha256 1fdd33e2d4c3…)  
+**Source after:** fixtures/k8s/stack-after.yaml (sha256 762ced65bd65…)
+
+## Findings
+
+| Rule | Severity | Status | Resource | Message | Where |
+| --- | --- | --- | --- | --- | --- |
+| DS-K8S-001 | HIGH | new | Service/demo/shop | Service type LoadBalancer may create public ingress; network policies and cloud ACLs are not validated | fixtures/k8s/stack-after.yaml:47 |
+| DS-K8S-007 | MEDIUM | new | Deployment/demo/shop | Unpinned or latest container image | fixtures/k8s/stack-after.yaml:20 |
+| DS-K8S-012 | HIGH | new | Deployment/demo/shop | Env var DB_PASSWORD has an inline literal value (value withheld) | fixtures/k8s/stack-after.yaml:25 |
+| DS-K8S-019 | MEDIUM | new | ConfigMap/demo/legacy-flags | ConfigMap/demo/legacy-flags exists BEFORE but not AFTER | fixtures/k8s/stack-before.yaml:86 |
+
+## Changes (desired state)
+
+| Resource | What | Change | Before | After | Where |
+| --- | --- | --- | --- | --- | --- |
+| Deployment/demo/shop | spec.template.spec.containers[shop].env[DB_PASSWORD].value | added | [redacted] | [redacted] | fixtures/k8s/stack-after.yaml:25 |
+| Deployment/demo/shop | spec.template.spec.containers[shop].env[DB_PASSWORD].valueFrom.secretKeyRef.key | removed | password | [absent] | fixtures/k8s/stack-before.yaml:28 |
+| Deployment/demo/shop | spec.template.spec.containers[shop].env[DB_PASSWORD].valueFrom.secretKeyRef.name | removed | shop-db | [absent] | fixtures/k8s/stack-before.yaml:27 |
+| Deployment/demo/shop | spec.template.spec.containers[shop].env[LOG_LEVEL].value | changed | info | debug | fixtures/k8s/stack-after.yaml:23 |
+| Deployment/demo/shop | container image (spec.template.spec.containers[shop].image) | changed | registry.example.com/shop@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | registry.example.com/shop:latest | fixtures/k8s/stack-after.yaml:20 |
+| Service/demo/shop | service exposure (spec.type) | changed | ClusterIP | LoadBalancer | fixtures/k8s/stack-after.yaml:47 |
+| ConfigMap/demo/shop-config | data.FEATURE_X | changed | off | on | fixtures/k8s/stack-after.yaml:78 |
+| ConfigMap/demo/legacy-flags | resource removed ((resource)) | resource-removed | [present] | [absent] | fixtures/k8s/stack-before.yaml:84 |
+
+## Blast-radius questions
+
+- Workload image changed: check health signals, compatibility, and rollout readiness
+- Service exposure changed: review traffic/security blast radius
+- High-risk static rule triggered; deployment approval must remain blocked
+
+## BlastMap (edges derived only from supplied manifests)
+
+| From | Relation | To | Certainty |
+| --- | --- | --- | --- |
+| Deployment/demo/shop | reads-config | ConfigMap/demo/shop-config | declared-in-manifests |
+| Deployment/demo/shop | runs-as | ServiceAccount/demo/shop | declared-target-not-supplied |
+| Ingress/demo/shop | routes-to | Service/demo/shop | declared-in-manifests |
+| Service/demo/shop | routes-to | Deployment/demo/shop | selector-matches-pod-template-labels |
+
+### Directly connected to changed resources
+
+| Changed | Connected | How |
+| --- | --- | --- |
+| Deployment/demo/shop | ConfigMap/demo/shop-config | this reads-config ConfigMap |
+| Deployment/demo/shop | ServiceAccount/demo/shop | this runs-as ServiceAccount |
+| Deployment/demo/shop | Service/demo/shop | Service routes-to this |
+| Service/demo/shop | Ingress/demo/shop | Ingress routes-to this |
+| Service/demo/shop | Deployment/demo/shop | this routes-to Deployment |
+| ConfigMap/demo/shop-config | Deployment/demo/shop | Deployment reads-config this |
+
+## Rollback prerequisites
+
+- [ ] Evidence of known previous deployable revision: **MISSING**
+- [ ] Independent backup validity evidence: **MISSING**
+- [ ] Actual successful restore test evidence: **MISSING**
+- [ ] Documented rollback sequence: **MISSING**
+- [ ] Independent authorized operator approval evidence: **MISSING**
+
+> Rollback readiness is not established by declarations alone; a restore drill and human sign-off are required
+
+## Verification boundaries
+
+| Check | State |
+| --- | --- |
+| manifestParsing | VERIFIED_STATIC |
+| policyRules | VERIFIED_STATIC |
+| environmentDrift | NOT_TESTED |
+| liveRBAC | NOT_TESTED |
+| clusterDryRun | NOT_RUN |
+| workloadHealth | NOT_RUN |
+| realRollback | NOT_RUN |
+| humanApproval | NOT_VERIFIED |
+
+## Limitations
+
+- This compares two local desired-state snapshots, not observed live drift.
+- The built-in YAML parser supports a strict subset (no anchors, tags, templates, block scalars or nested flow collections); unsupported syntax fails loudly.
+- Policy checks are heuristic static rules, not authoritative validation, admission control or compliance certification.
+- Admission mutation, defaulting, controllers, image tag drift and real traffic exposure are not modelled.
+- Dependency edges come only from the supplied manifests; anything else is reported UNKNOWN.
+- No Kubernetes/cloud connection, deployment, destructive command, or rollback was executed.
+
+Report SHA-256 (unkeyed, tamper evidence only): `36477c2b00e7396a7f61321239169f5d6e84f4c9037abdf9fed7532a841f6e94`  
+Tool: deploysutra-ai 0.2.0 by Vatsal Shah

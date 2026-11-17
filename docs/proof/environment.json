@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "recordedAt": "2026-11-17T17:09:01.008Z",
+  "node": "v24.15.0",
+  "platform": "win32 10.0.26300",
+  "arch": "x64",
+  "tests": 312,
+  "pass": 308,
+  "fail": 0,
+  "skipped": 4,
+  "testExit": 0
+}

@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "2.0",
+  "product": "DeploySutra AI",
+  "productVersion": "0.2.0",
+  "scope": "IMPORTED_TOFU_PLAN_ACTIONS_ONLY",
+  "formatVersion": "1.2",
+  "changeCount": 2,
+  "totalChangesInInput": 2,
+  "truncated": false,
+  "counts": {
+    "create": 1,
+    "update": 1,
+    "delete": 0,
+    "no_op": 0,
+    "read": 0,
+    "forget": 0,
+    "replace": 0
+  },
+  "byType": {
+    "aws_instance": {
+      "create": 1,
+      "update": 0,
+      "delete": 0,
+      "replace": 0
+    },
+    "aws_s3_bucket_policy": {
+      "create": 0,
+      "update": 1,
+      "delete": 0,
+      "replace": 0
+    }
+  },
+  "resourceTypes": [
+    "aws_instance",
+    "aws_s3_bucket_policy"
+  ],
+  "dangerousChangeCount": 0,
+  "dataBearingDestructiveCount": 0,
+  "ignoredSensitiveSections": [],
+  "gate": "HUMAN_REVIEW_REQUIRED",
+  "gateReasons": [],
+  "checks": {
+    "planAuthenticity": "NOT_VERIFIED",
+    "dryRunExecutedHere": "NOT_RUN",
+    "providerPermissions": "NOT_TESTED",
+    "rollback": "NOT_TESTED",
+    "planCompleteness": "VERIFIED_STATIC"
+  },
+  "limitations": [
+    "Source plan input may contain secrets; only resource type and action summaries are retained in output. Resource addresses, values, providers and state are discarded.",
+    "Data-bearing detection is a resource-type name heuristic, not knowledge of what the resource stores.",
+    "No plan was executed or confirmed against a live workspace."
+  ],
+  "integrity": {
+    "algorithm": "SHA-256",
+    "digest": "d65729f923524ed2882752633e47d627a2d890246e7f66d861d029c1f1c480cd",
+    "meaning": "Unkeyed integrity checksum, NOT a signature or proof of authenticity"
+  }
+}

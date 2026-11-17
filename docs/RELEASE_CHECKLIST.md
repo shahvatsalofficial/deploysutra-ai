@@ -1,0 +1,12 @@
+# Open-source public release checklist
+- [ ] Name, trademark, GitHub, npm and domain collision checks independently completed (npm and GitHub names checked; trademark NOT checked).
+- [ ] Apache-2.0 source license and dependency licenses reviewed, attribution correct.
+- [x] Clean install from the packed tarball passes the CLI smoke test in CI (see .github/workflows/ci.yml).
+- [ ] No credentials, kubeconfigs, secrets, private source paths or real production plan states in fixtures or screenshots.
+- [ ] Threat model reviewed, input fuzzing run, optional dependency CVEs checked.
+- [ ] Docs explicitly separate static checks from runtime/cluster validation.
+- [ ] Native skill invocation tested in each claimed IDE version.
+- [ ] No production apply, approval bypass, unreviewed cloud IAM or network calls.
+- [ ] Maintainer-approved issue templates, Code of Conduct and vulnerability disclosure set.
+- [ ] Public landing page and demo contain truthful capabilities and high-quality accessible UI.
+- [ ] Versioned schemas, migration policy and signed release packages added when implemented.

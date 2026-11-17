@@ -1,0 +1,18 @@
+[
+  {
+    "id": "DS-DIFF-c2bdd121e",
+    "resource": "Service/default/checkout-service",
+    "path": "spec.type",
+    "label": "service exposure",
+    "risk": "exposure",
+    "change": "changed",
+    "before": "ClusterIP",
+    "after": "LoadBalancer",
+    "redacted": false,
+    "source": "fixtures/k8s/service-after.yaml",
+    "line": 6,
+    "lineConfidence": "exact",
+    "evidence": "static-manifest-diff",
+    "scope": "desired-state-only"
+  }
+]

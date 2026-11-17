@@ -1,0 +1,1882 @@
+TAP version 13
+# Subtest: audit report is sealed and verifies
+ok 1 - audit report is sealed and verifies
+  ---
+  duration_ms: 3.9563
+  type: 'test'
+  ...
+# Subtest: audit has no failed checks
+ok 2 - audit has no failed checks
+  ---
+  duration_ms: 0.5801
+  type: 'test'
+  ...
+# Subtest: audit covers all nine sections
+ok 3 - audit covers all nine sections
+  ---
+  duration_ms: 1.5312
+  type: 'test'
+  ...
+# Subtest: audit lists what was not run and its honest limits
+ok 4 - audit lists what was not run and its honest limits
+  ---
+  duration_ms: 0.3194
+  type: 'test'
+  ...
+# Subtest: audit renders to Markdown and HTML
+ok 5 - audit renders to Markdown and HTML
+  ---
+  duration_ms: 4.4535
+  type: 'test'
+  ...
+# Subtest: audit statement does not claim certification
+ok 6 - audit statement does not claim certification
+  ---
+  duration_ms: 0.339
+  type: 'test'
+  ...
+# Subtest: audit records gold corpus precision and recall
+ok 7 - audit records gold corpus precision and recall
+  ---
+  duration_ms: 0.2434
+  type: 'test'
+  ...
+# Subtest: SHA-256 is deterministic
+ok 8 - SHA-256 is deterministic
+  ---
+  duration_ms: 6.3411
+  type: 'test'
+  ...
+# Subtest: SHA-256 changes with input
+ok 9 - SHA-256 changes with input
+  ---
+  duration_ms: 0.6045
+  type: 'test'
+  ...
+# Subtest: canonical JSON ignores key order
+ok 10 - canonical JSON ignores key order
+  ---
+  duration_ms: 0.6174
+  type: 'test'
+  ...
+# Subtest: seal/verify round trip
+ok 11 - seal/verify round trip
+  ---
+  duration_ms: 0.6412
+  type: 'test'
+  ...
+# Subtest: verify rejects non-object and unsealed
+ok 12 - verify rejects non-object and unsealed
+  ---
+  duration_ms: 0.4708
+  type: 'test'
+  ...
+# Subtest: verify survives JSON round trip with reordered keys
+ok 13 - verify survives JSON round trip with reordered keys
+  ---
+  duration_ms: 0.7122
+  type: 'test'
+  ...
+# Subtest: version constant is 0.2.0
+ok 14 - version constant is 0.2.0
+  ---
+  duration_ms: 0.3354
+  type: 'test'
+  ...
+# Subtest: parser reads Deployment kind/name
+ok 15 - parser reads Deployment kind/name
+  ---
+  duration_ms: 14.1617
+  type: 'test'
+  ...
+# Subtest: parser reads 3 replicas
+ok 16 - parser reads 3 replicas
+  ---
+  duration_ms: 1.0808
+  type: 'test'
+  ...
+# Subtest: parser reads nested container array
+ok 17 - parser reads nested container array
+  ---
+  duration_ms: 1.2337
+  type: 'test'
+  ...
+# Subtest: parser reads nested boolean
+ok 18 - parser reads nested boolean
+  ---
+  duration_ms: 3.2002
+  type: 'test'
+  ...
+# Subtest: parser reads quoted limits
+ok 19 - parser reads quoted limits
+  ---
+  duration_ms: 1.2367
+  type: 'test'
+  ...
+# Subtest: parser scalars: null, negative, float
+ok 20 - parser scalars: null, negative, float
+  ---
+  duration_ms: 18.3307
+  type: 'test'
+  ...
+# Subtest: parser reads string sequence
+ok 21 - parser reads string sequence
+  ---
+  duration_ms: 0.3721
+  type: 'test'
+  ...
+# Subtest: parser reads quotes with trailing comment
+ok 22 - parser reads quotes with trailing comment
+  ---
+  duration_ms: 0.2178
+  type: 'test'
+  ...
+# Subtest: parser reads single quotes and escaped quote
+ok 23 - parser reads single quotes and escaped quote
+  ---
+  duration_ms: 0.177
+  type: 'test'
+  ...
+# Subtest: parser reads empty flow collections
+ok 24 - parser reads empty flow collections
+  ---
+  duration_ms: 0.1841
+  type: 'test'
+  ...
+# Subtest: parser reads scalar flow sequence (RBAC verbs)
+ok 25 - parser reads scalar flow sequence (RBAC verbs)
+  ---
+  duration_ms: 0.5706
+  type: 'test'
+  ...
+# Subtest: parser keeps & inside an unquoted URL value
+ok 26 - parser keeps & inside an unquoted URL value
+  ---
+  duration_ms: 0.1518
+  type: 'test'
+  ...
+# Subtest: parser reads key with slash and dot
+ok 27 - parser reads key with slash and dot
+  ---
+  duration_ms: 0.1142
+  type: 'test'
+  ...
+# Subtest: parser reads mapping inside sequence item
+ok 28 - parser reads mapping inside sequence item
+  ---
+  duration_ms: 0.4421
+  type: 'test'
+  ...
+# Subtest: parser multi-document split
+ok 29 - parser multi-document split
+  ---
+  duration_ms: 0.4319
+  type: 'test'
+  ...
+# Subtest: parser skips leading separator and comments
+ok 30 - parser skips leading separator and comments
+  ---
+  duration_ms: 0.1204
+  type: 'test'
+  ...
+# Subtest: parseLimitedYAML refuses multiple documents
+ok 31 - parseLimitedYAML refuses multiple documents
+  ---
+  duration_ms: 0.6845
+  type: 'test'
+  ...
+# Subtest: parser rejects tabs
+ok 32 - parser rejects tabs
+  ---
+  duration_ms: 0.2759
+  type: 'test'
+  ...
+# Subtest: parser rejects anchors
+ok 33 - parser rejects anchors
+  ---
+  duration_ms: 0.123
+  type: 'test'
+  ...
+# Subtest: parser rejects aliases
+ok 34 - parser rejects aliases
+  ---
+  duration_ms: 0.1284
+  type: 'test'
+  ...
+# Subtest: parser rejects tags
+ok 35 - parser rejects tags
+  ---
+  duration_ms: 0.0769
+  type: 'test'
+  ...
+# Subtest: parser rejects inline object
+ok 36 - parser rejects inline object
+  ---
+  duration_ms: 0.1332
+  type: 'test'
+  ...
+# Subtest: parser rejects templates
+ok 37 - parser rejects templates
+  ---
+  duration_ms: 0.1088
+  type: 'test'
+  ...
+# Subtest: parser rejects block scalars
+ok 38 - parser rejects block scalars
+  ---
+  duration_ms: 0.1021
+  type: 'test'
+  ...
+# Subtest: parser rejects merge keys
+ok 39 - parser rejects merge keys
+  ---
+  duration_ms: 0.1266
+  type: 'test'
+  ...
+# Subtest: parser rejects __proto__ key
+ok 40 - parser rejects __proto__ key
+  ---
+  duration_ms: 0.1242
+  type: 'test'
+  ...
+# Subtest: parser rejects constructor key
+ok 41 - parser rejects constructor key
+  ---
+  duration_ms: 0.0809
+  type: 'test'
+  ...
+# Subtest: parser rejects mixed seq/map
+ok 42 - parser rejects mixed seq/map
+  ---
+  duration_ms: 0.1072
+  type: 'test'
+  ...
+# Subtest: parser rejects duplicate keys
+ok 43 - parser rejects duplicate keys
+  ---
+  duration_ms: 0.1033
+  type: 'test'
+  ...
+# Subtest: parser rejects odd indentation
+ok 44 - parser rejects odd indentation
+  ---
+  duration_ms: 0.0897
+  type: 'test'
+  ...
+# Subtest: parser rejects empty input
+ok 45 - parser rejects empty input
+  ---
+  duration_ms: 0.1023
+  type: 'test'
+  ...
+# Subtest: parser rejects document end
+ok 46 - parser rejects document end
+  ---
+  duration_ms: 0.1005
+  type: 'test'
+  ...
+# Subtest: parser rejects nested flow
+ok 47 - parser rejects nested flow
+  ---
+  duration_ms: 0.2141
+  type: 'test'
+  ...
+# Subtest: parser rejects unterminated quote
+ok 48 - parser rejects unterminated quote
+  ---
+  duration_ms: 0.1344
+  type: 'test'
+  ...
+# Subtest: parser rejects bad escape
+ok 49 - parser rejects bad escape
+  ---
+  duration_ms: 0.2003
+  type: 'test'
+  ...
+# Subtest: parser source map is exact for mapping keys and sequence items
+ok 50 - parser source map is exact for mapping keys and sequence items
+  ---
+  duration_ms: 0.2399
+  type: 'test'
+  ...
+# Subtest: parser source map continues across documents
+ok 51 - parser source map continues across documents
+  ---
+  duration_ms: 0.1578
+  type: 'test'
+  ...
+# Subtest: read JSON resource
+ok 52 - read JSON resource
+  ---
+  duration_ms: 78.0048
+  type: 'test'
+  ...
+# Subtest: read rejects invalid JSON
+ok 53 - read rejects invalid JSON
+  ---
+  duration_ms: 36.7462
+  type: 'test'
+  ...
+# Subtest: read rejects resource without metadata
+ok 54 - read rejects resource without metadata
+  ---
+  duration_ms: 11.7414
+  type: 'test'
+  ...
+# Subtest: read rejects wrong extension
+ok 55 - read rejects wrong extension
+  ---
+  duration_ms: 55.0666
+  type: 'test'
+  ...
+# Subtest: read rejects >1 MiB
+ok 56 - read rejects >1 MiB
+  ---
+  duration_ms: 18.0325
+  type: 'test'
+  ...
+# Subtest: read accepts uppercase JSON extension
+ok 57 - read accepts uppercase JSON extension
+  ---
+  duration_ms: 7.0391
+  type: 'test'
+  ...
+# Subtest: read rejects directory
+ok 58 - read rejects directory
+  ---
+  duration_ms: 1.9201
+  type: 'test'
+  ...
+# Subtest: read rejects missing file
+ok 59 - read rejects missing file
+  ---
+  duration_ms: 1.7833
+  type: 'test'
+  ...
+# Subtest: read rejects symlink file
+ok 60 - read rejects symlink file # SKIP cannot create symlinks on this OS user
+  ---
+  duration_ms: 0.2031
+  type: 'test'
+  ...
+# Subtest: read rejects symlink directory
+ok 61 - read rejects symlink directory # SKIP cannot create symlinks on this OS user
+  ---
+  duration_ms: 0.1587
+  type: 'test'
+  ...
+# Subtest: readManifests reads multi-document YAML
+ok 62 - readManifests reads multi-document YAML
+  ---
+  duration_ms: 2.3427
+  type: 'test'
+  ...
+# Subtest: readManifest refuses multi-document file
+ok 63 - readManifest refuses multi-document file
+  ---
+  duration_ms: 3.6144
+  type: 'test'
+  ...
+# Subtest: readManifests rejects duplicate identity
+ok 64 - readManifests rejects duplicate identity
+  ---
+  duration_ms: 11.2376
+  type: 'test'
+  ...
+# Subtest: readManifests rejects document missing name
+ok 65 - readManifests rejects document missing name
+  ---
+  duration_ms: 47.0783
+  type: 'test'
+  ...
+# Subtest: readManifests expands JSON array and List
+ok 66 - readManifests expands JSON array and List
+  ---
+  duration_ms: 22.1433
+  type: 'test'
+  ...
+# Subtest: JSON line map is exact
+ok 67 - JSON line map is exact
+  ---
+  duration_ms: 0.5689
+  type: 'test'
+  ...
+# Subtest: source path never absolute outside cwd
+ok 68 - source path never absolute outside cwd
+  ---
+  duration_ms: 81.7288
+  type: 'test'
+  ...
+# Subtest: source is hashed
+ok 69 - source is hashed
+  ---
+  duration_ms: 1.5326
+  type: 'test'
+  ...
+# Subtest: too many documents refused
+ok 70 - too many documents refused
+  ---
+  duration_ms: 56.2581
+  type: 'test'
+  ...
+# Subtest: diff catches replicas, image, privilege
+ok 71 - diff catches replicas, image, privilege
+  ---
+  duration_ms: 6.3701
+  type: 'test'
+  ...
+# Subtest: diff carries exact source line from the AFTER file
+ok 72 - diff carries exact source line from the AFTER file
+  ---
+  duration_ms: 2.1705
+  type: 'test'
+  ...
+# Subtest: diff does not dump env values
+ok 73 - diff does not dump env values
+  ---
+  duration_ms: 0.7867
+  type: 'test'
+  ...
+# Subtest: diff redacts Secret data entirely
+ok 74 - diff redacts Secret data entirely
+  ---
+  duration_ms: 0.68
+  type: 'test'
+  ...
+# Subtest: diff redacts password-named keys in ConfigMap
+ok 75 - diff redacts password-named keys in ConfigMap
+  ---
+  duration_ms: 0.3446
+  type: 'test'
+  ...
+# Subtest: diff redacts bearer token inside strings
+ok 76 - diff redacts bearer token inside strings
+  ---
+  duration_ms: 0.3411
+  type: 'test'
+  ...
+# Subtest: diff rejects identity mismatch
+ok 77 - diff rejects identity mismatch
+  ---
+  duration_ms: 4.3007
+  type: 'test'
+  ...
+# Subtest: diff of identical inputs is empty
+ok 78 - diff of identical inputs is empty
+  ---
+  duration_ms: 1.7171
+  type: 'test'
+  ...
+# Subtest: diff ids are stable across runs
+ok 79 - diff ids are stable across runs
+  ---
+  duration_ms: 21.2078
+  type: 'test'
+  ...
+# Subtest: diff matches containers by name, not position
+ok 80 - diff matches containers by name, not position
+  ---
+  duration_ms: 0.4697
+  type: 'test'
+  ...
+# Subtest: diff sees second container change
+ok 81 - diff sees second container change
+  ---
+  duration_ms: 0.2772
+  type: 'test'
+  ...
+# Subtest: diff ignores status and server-populated metadata
+ok 82 - diff ignores status and server-populated metadata
+  ---
+  duration_ms: 0.3209
+  type: 'test'
+  ...
+# Subtest: diff reports annotation changes
+ok 83 - diff reports annotation changes
+  ---
+  duration_ms: 0.242
+  type: 'test'
+  ...
+# Subtest: rule registry has stable unique IDs DS-K8S-001..019
+ok 84 - rule registry has stable unique IDs DS-K8S-001..019
+  ---
+  duration_ms: 0.2067
+  type: 'test'
+  ...
+# Subtest: every rule has remediation, trigger, why and false-positive note
+ok 85 - every rule has remediation, trigger, why and false-positive note
+  ---
+  duration_ms: 0.1698
+  type: 'test'
+  ...
+# Subtest: explainRule is case-insensitive and rejects unknown ids
+ok 86 - explainRule is case-insensitive and rejects unknown ids
+  ---
+  duration_ms: 0.1809
+  type: 'test'
+  ...
+# Subtest: baseline fixture has no privileged finding
+ok 87 - baseline fixture has no privileged finding
+  ---
+  duration_ms: 18.6828
+  type: 'test'
+  ...
+# Subtest: after fixture trips 003-007 and 009
+ok 88 - after fixture trips 003-007 and 009
+  ---
+  duration_ms: 2.7306
+  type: 'test'
+  ...
+# Subtest: findings carry rule ID, source, severity and line
+ok 89 - findings carry rule ID, source, severity and line
+  ---
+  duration_ms: 1.2653
+  type: 'test'
+  ...
+# Subtest: findings are deterministic and sorted
+ok 90 - findings are deterministic and sorted
+  ---
+  duration_ms: 2.6914
+  type: 'test'
+  ...
+# Subtest: absent-field finding points to nearest parent line
+ok 91 - absent-field finding points to nearest parent line
+  ---
+  duration_ms: 1.0825
+  type: 'test'
+  ...
+# Subtest: secret env finding never contains the value
+ok 92 - secret env finding never contains the value
+  ---
+  duration_ms: 0.6793
+  type: 'test'
+  ...
+# Subtest: corpus: precision and recall are 1.0 with no misses
+ok 93 - corpus: precision and recall are 1.0 with no misses
+  ---
+  duration_ms: 9.8964
+  type: 'test'
+  ...
+# Subtest: corpus: every case has a name and expectation
+ok 94 - corpus: every case has a name and expectation
+  ---
+  duration_ms: 0.1829
+  type: 'test'
+  ...
+# Subtest: classifyChange warns on identity change
+ok 95 - classifyChange warns on identity change
+  ---
+  duration_ms: 8.0813
+  type: 'test'
+  ...
+# Subtest: profiles: development/staging/production exist
+ok 96 - profiles: development/staging/production exist
+  ---
+  duration_ms: 0.2296
+  type: 'test'
+  ...
+# Subtest: assess blocks high risk
+ok 97 - assess blocks high risk
+  ---
+  duration_ms: 7.2357
+  type: 'test'
+  ...
+# Subtest: assess gate reasons list the blocking findings
+ok 98 - assess gate reasons list the blocking findings
+  ---
+  duration_ms: 2.9646
+  type: 'test'
+  ...
+# Subtest: assess never returns READY
+ok 99 - assess never returns READY
+  ---
+  duration_ms: 23.5714
+  type: 'test'
+  ...
+# Subtest: assess: hardened + full declarations is HUMAN_REVIEW_REQUIRED, not ready
+ok 100 - assess: hardened + full declarations is HUMAN_REVIEW_REQUIRED, not ready
+  ---
+  duration_ms: 1.6531
+  type: 'test'
+  ...
+# Subtest: assess: missing rollback blocks even a clean manifest
+ok 101 - assess: missing rollback blocks even a clean manifest
+  ---
+  duration_ms: 1.2715
+  type: 'test'
+  ...
+# Subtest: assess: persistent HIGH risk is not ignored
+ok 102 - assess: persistent HIGH risk is not ignored
+  ---
+  duration_ms: 2.2894
+  type: 'test'
+  ...
+# Subtest: assess: profile changes blocking (MEDIUM blocks only in production)
+ok 103 - assess: profile changes blocking (MEDIUM blocks only in production)
+  ---
+  duration_ms: 0.9536
+  type: 'test'
+  ...
+# Subtest: assess records whether profile was explicit
+ok 104 - assess records whether profile was explicit
+  ---
+  duration_ms: 4.0731
+  type: 'test'
+  ...
+# Subtest: assess rejects unknown profile
+ok 105 - assess rejects unknown profile
+  ---
+  duration_ms: 1.838
+  type: 'test'
+  ...
+# Subtest: assess rejects mismatched single resources
+ok 106 - assess rejects mismatched single resources
+  ---
+  duration_ms: 1.723
+  type: 'test'
+  ...
+# Subtest: assess records untested cluster and permission checks
+ok 107 - assess records untested cluster and permission checks
+  ---
+  duration_ms: 2.5609
+  type: 'test'
+  ...
+# Subtest: assess is deterministic: equal inputs, equal digest
+ok 108 - assess is deterministic: equal inputs, equal digest
+  ---
+  duration_ms: 5.9879
+  type: 'test'
+  ...
+# Subtest: assess has no timestamps
+ok 109 - assess has no timestamps
+  ---
+  duration_ms: 2.4554
+  type: 'test'
+  ...
+# Subtest: assess report verifies after JSON round trip
+ok 110 - assess report verifies after JSON round trip
+  ---
+  duration_ms: 7.052
+  type: 'test'
+  ...
+# Subtest: seal rejects edited and extended reports
+ok 111 - seal rejects edited and extended reports
+  ---
+  duration_ms: 4.6304
+  type: 'test'
+  ...
+# Subtest: multi-doc: removed resource raises DS-K8S-019
+ok 112 - multi-doc: removed resource raises DS-K8S-019
+  ---
+  duration_ms: 4.1981
+  type: 'test'
+  ...
+# Subtest: multi-doc: added resource is reported
+ok 113 - multi-doc: added resource is reported
+  ---
+  duration_ms: 3.0965
+  type: 'test'
+  ...
+# Subtest: multi-doc: LoadBalancer + inline secret + latest all found
+ok 114 - multi-doc: LoadBalancer + inline secret + latest all found
+  ---
+  duration_ms: 2.684
+  type: 'test'
+  ...
+# Subtest: multi-doc: secret literal never reaches the report
+ok 115 - multi-doc: secret literal never reaches the report
+  ---
+  duration_ms: 2.6015
+  type: 'test'
+  ...
+# Subtest: blastmap: Service routes to Deployment, Ingress to Service
+ok 116 - blastmap: Service routes to Deployment, Ingress to Service
+  ---
+  duration_ms: 1.3407
+  type: 'test'
+  ...
+# Subtest: blastmap: unsupplied references are UNKNOWN, not invented
+ok 117 - blastmap: unsupplied references are UNKNOWN, not invented
+  ---
+  duration_ms: 1.3439
+  type: 'test'
+  ...
+# Subtest: blastmap: Service with no matching workload is UNKNOWN
+ok 118 - blastmap: Service with no matching workload is UNKNOWN
+  ---
+  duration_ms: 0.365
+  type: 'test'
+  ...
+# Subtest: impactedByChange lists connected resources
+ok 119 - impactedByChange lists connected resources
+  ---
+  duration_ms: 3.2429
+  type: 'test'
+  ...
+# Subtest: rollback missing entirely is unready
+ok 120 - rollback missing entirely is unready
+  ---
+  duration_ms: 0.3616
+  type: 'test'
+  ...
+# Subtest: rollback arrays/strings are treated as not supplied
+ok 121 - rollback arrays/strings are treated as not supplied
+  ---
+  duration_ms: 0.1508
+  type: 'test'
+  ...
+# Subtest: rollback declarations cannot prove readiness
+ok 122 - rollback declarations cannot prove readiness
+  ---
+  duration_ms: 0.1423
+  type: 'test'
+  ...
+# Subtest: rollback truthy strings do not count as verified booleans
+ok 123 - rollback truthy strings do not count as verified booleans
+  ---
+  duration_ms: 0.1382
+  type: 'test'
+  ...
+# Subtest: tofu counts actions and replacement
+ok 124 - tofu counts actions and replacement
+  ---
+  duration_ms: 9.7677
+  type: 'test'
+  ...
+# Subtest: tofu destructive count and data-bearing block
+ok 125 - tofu destructive count and data-bearing block
+  ---
+  duration_ms: 1.0227
+  type: 'test'
+  ...
+# Subtest: tofu safe plan needs review but is not blocked
+ok 126 - tofu safe plan needs review but is not blocked
+  ---
+  duration_ms: 0.6274
+  type: 'test'
+  ...
+# Subtest: tofu never copies secrets, addresses or state
+ok 127 - tofu never copies secrets, addresses or state
+  ---
+  duration_ms: 0.5879
+  type: 'test'
+  ...
+# Subtest: tofu names discarded sections without copying them
+ok 128 - tofu names discarded sections without copying them
+  ---
+  duration_ms: 1.1659
+  type: 'test'
+  ...
+# Subtest: tofu flags truncation instead of silently dropping
+ok 129 - tofu flags truncation instead of silently dropping
+  ---
+  duration_ms: 1.9084
+  type: 'test'
+  ...
+# Subtest: tofu cannot claim the plan was run
+ok 130 - tofu cannot claim the plan was run
+  ---
+  duration_ms: 0.3018
+  type: 'test'
+  ...
+# Subtest: tofu rejects missing resource_changes and non-objects
+ok 131 - tofu rejects missing resource_changes and non-objects
+  ---
+  duration_ms: 0.2806
+  type: 'test'
+  ...
+# Subtest: tofu sanitises suspicious resource type and format version
+ok 132 - tofu sanitises suspicious resource type and format version
+  ---
+  duration_ms: 0.3065
+  type: 'test'
+  ...
+# Subtest: tofu skips unknown actions
+ok 133 - tofu skips unknown actions
+  ---
+  duration_ms: 0.2276
+  type: 'test'
+  ...
+# Subtest: tofu create-before-destroy is also a replacement
+ok 134 - tofu create-before-destroy is also a replacement
+  ---
+  duration_ms: 0.1712
+  type: 'test'
+  ...
+# Subtest: tofu output verifies
+ok 135 - tofu output verifies
+  ---
+  duration_ms: 0.159
+  type: 'test'
+  ...
+# Subtest: tofu tolerates malformed entries
+ok 136 - tofu tolerates malformed entries
+  ---
+  duration_ms: 0.1883
+  type: 'test'
+  ...
+# Subtest: markdown carries gate, rule IDs and reasons
+ok 137 - markdown carries gate, rule IDs and reasons
+  ---
+  duration_ms: 5.42
+  type: 'test'
+  ...
+# Subtest: markdown refuses tampered reports
+ok 138 - markdown refuses tampered reports
+  ---
+  duration_ms: 2.8578
+  type: 'test'
+  ...
+# Subtest: HTML is a full accessible document
+ok 139 - HTML is a full accessible document
+  ---
+  duration_ms: 5.2288
+  type: 'test'
+  ...
+# Subtest: HTML never uses a green banner for the gate
+ok 140 - HTML never uses a green banner for the gate
+  ---
+  duration_ms: 3.3177
+  type: 'test'
+  ...
+# Subtest: HTML escapes hostile manifest strings
+ok 141 - HTML escapes hostile manifest strings
+  ---
+  duration_ms: 0.9374
+  type: 'test'
+  ...
+# Subtest: Markdown neutralises table and backtick injection
+ok 142 - Markdown neutralises table and backtick injection
+  ---
+  duration_ms: 0.9096
+  type: 'test'
+  ...
+# Subtest: HTML for tofu summary
+ok 143 - HTML for tofu summary
+  ---
+  duration_ms: 1.0374
+  type: 'test'
+  ...
+# Subtest: reports exported with required names
+ok 144 - reports exported with required names
+  ---
+  duration_ms: 300.452
+  type: 'test'
+  ...
+# Subtest: exported JSON verifies
+ok 145 - exported JSON verifies
+  ---
+  duration_ms: 339.9407
+  type: 'test'
+  ...
+# Subtest: export rejects tampered report
+ok 146 - export rejects tampered report
+  ---
+  duration_ms: 63.3895
+  type: 'test'
+  ...
+# Subtest: CLI help lists no deployment command
+ok 147 - CLI help lists no deployment command
+  ---
+  duration_ms: 2555.2582
+  type: 'test'
+  ...
+# Subtest: CLI version
+ok 148 - CLI version
+  ---
+  duration_ms: 3206.882
+  type: 'test'
+  ...
+# Subtest: CLI doctor reports no cluster access
+ok 149 - CLI doctor reports no cluster access
+  ---
+  duration_ms: 4076.657
+  type: 'test'
+  ...
+# Subtest: CLI rules lists 19 stable IDs
+ok 150 - CLI rules lists 19 stable IDs
+  ---
+  duration_ms: 1572.8442
+  type: 'test'
+  ...
+# Subtest: CLI explain prints remediation
+ok 151 - CLI explain prints remediation
+  ---
+  duration_ms: 3742.7258
+  type: 'test'
+  ...
+# Subtest: CLI explain unknown id fails
+ok 152 - CLI explain unknown id fails
+  ---
+  duration_ms: 4305.3532
+  type: 'test'
+  ...
+# Subtest: CLI policy lists stable IDs
+ok 153 - CLI policy lists stable IDs
+  ---
+  duration_ms: 13334.5692
+  type: 'test'
+  ...
+# Subtest: CLI policy --fail-on exits 2 on risky input and 0 on hardened
+ok 154 - CLI policy --fail-on exits 2 on risky input and 0 on hardened
+  ---
+  duration_ms: 13683.7281
+  type: 'test'
+  ...
+# Subtest: CLI policy rejects bad --fail-on
+ok 155 - CLI policy rejects bad --fail-on
+  ---
+  duration_ms: 5737.8404
+  type: 'test'
+  ...
+# Subtest: CLI analyze returns BLOCKED code 2
+ok 156 - CLI analyze returns BLOCKED code 2
+  ---
+  duration_ms: 3278.1153
+  type: 'test'
+  ...
+# Subtest: CLI analyze --out writes MD, HTML and JSON
+ok 157 - CLI analyze --out writes MD, HTML and JSON
+  ---
+  duration_ms: 3294.0974
+  type: 'test'
+  ...
+# Subtest: CLI analyze --format json is parseable and sealed
+ok 158 - CLI analyze --format json is parseable and sealed
+  ---
+  duration_ms: 1608.5936
+  type: 'test'
+  ...
+# Subtest: CLI analyze hardened + declarations exits 0
+ok 159 - CLI analyze hardened + declarations exits 0
+  ---
+  duration_ms: 2758.7642
+  type: 'test'
+  ...
+# Subtest: CLI analyze multi-document stack
+ok 160 - CLI analyze multi-document stack
+  ---
+  duration_ms: 4486.3982
+  type: 'test'
+  ...
+# Subtest: CLI analyze mismatched manifest fails
+ok 161 - CLI analyze mismatched manifest fails
+  ---
+  duration_ms: 1247.8429
+  type: 'test'
+  ...
+# Subtest: CLI analyze rejects bad profile and bad rollback json
+ok 162 - CLI analyze rejects bad profile and bad rollback json
+  ---
+  duration_ms: 5791.0709
+  type: 'test'
+  ...
+# Subtest: CLI missing flag value does not crash
+ok 163 - CLI missing flag value does not crash
+  ---
+  duration_ms: 3778.2941
+  type: 'test'
+  ...
+# Subtest: CLI policy without input fails
+ok 164 - CLI policy without input fails
+  ---
+  duration_ms: 5070.17
+  type: 'test'
+  ...
+# Subtest: CLI deploy/apply/rollback/destroy do not exist
+ok 165 - CLI deploy/apply/rollback/destroy do not exist
+  ---
+  duration_ms: 12735.7973
+  type: 'test'
+  ...
+# Subtest: CLI secret-safe tofu import
+ok 166 - CLI secret-safe tofu import
+  ---
+  duration_ms: 2127.0053
+  type: 'test'
+  ...
+# Subtest: CLI tofu safe plan exits 0
+ok 167 - CLI tofu safe plan exits 0
+  ---
+  duration_ms: 4779.3534
+  type: 'test'
+  ...
+# Subtest: CLI tofu rejects invalid JSON
+ok 168 - CLI tofu rejects invalid JSON
+  ---
+  duration_ms: 6217.1371
+  type: 'test'
+  ...
+# Subtest: CLI verify accepts genuine and rejects altered report
+ok 169 - CLI verify accepts genuine and rejects altered report
+  ---
+  duration_ms: 8801.326
+  type: 'test'
+  ...
+# Subtest: CLI audit (tests skipped) writes MD, HTML and JSON and passes
+ok 170 - CLI audit (tests skipped) writes MD, HTML and JSON and passes
+  ---
+  duration_ms: 13310.5377
+  type: 'test'
+  ...
+# Subtest: audit report states its limits and the not-run list
+ok 171 - audit report states its limits and the not-run list
+  ---
+  duration_ms: 5613.9179
+  type: 'test'
+  ...
+# Subtest: project-local skill copy claude
+ok 172 - project-local skill copy claude
+  ---
+  duration_ms: 723.3434
+  type: 'test'
+  ...
+# Subtest: project-local skill copy cursor
+ok 173 - project-local skill copy cursor
+  ---
+  duration_ms: 495.8835
+  type: 'test'
+  ...
+# Subtest: project-local skill copy codex
+ok 174 - project-local skill copy codex
+  ---
+  duration_ms: 391.2
+  type: 'test'
+  ...
+# Subtest: project-local skill copy gemini
+ok 175 - project-local skill copy gemini
+  ---
+  duration_ms: 708.9171
+  type: 'test'
+  ...
+# Subtest: project-local skill copy copilot
+ok 176 - project-local skill copy copilot
+  ---
+  duration_ms: 668.1575
+  type: 'test'
+  ...
+# Subtest: project-local skill copy opencode
+ok 177 - project-local skill copy opencode
+  ---
+  duration_ms: 1842.4214
+  type: 'test'
+  ...
+# Subtest: installer fails on unsupported host
+ok 178 - installer fails on unsupported host
+  ---
+  duration_ms: 3.5434
+  type: 'test'
+  ...
+# Subtest: installer refuses overwrite
+ok 179 - installer refuses overwrite
+  ---
+  duration_ms: 1523.5216
+  type: 'test'
+  ...
+# Subtest: installer refuses skill destination symlink
+ok 180 - installer refuses skill destination symlink # SKIP cannot create symlinks on this OS user
+  ---
+  duration_ms: 0.1502
+  type: 'test'
+  ...
+# Subtest: installer refuses symlink intermediate directory
+ok 181 - installer refuses symlink intermediate directory # SKIP cannot create symlinks on this OS user
+  ---
+  duration_ms: 0.0929
+  type: 'test'
+  ...
+# Subtest: installer cannot install to missing folder
+ok 182 - installer cannot install to missing folder
+  ---
+  duration_ms: 3.3778
+  type: 'test'
+  ...
+# Subtest: CLI skill install works
+ok 183 - CLI skill install works
+  ---
+  duration_ms: 12921.4348
+  type: 'test'
+  ...
+# Subtest: server refuses missing/weak token and remote host
+ok 184 - server refuses missing/weak token and remote host
+  ---
+  duration_ms: 22.0876
+  type: 'test'
+  ...
+# Subtest: server refuses tampered report
+ok 185 - server refuses tampered report
+  ---
+  duration_ms: 367.2202
+  type: 'test'
+  ...
+# Subtest: server requires bearer auth (none, wrong)
+ok 186 - server requires bearer auth (none, wrong)
+  ---
+  duration_ms: 2670.4206
+  type: 'test'
+  ...
+# Subtest: server returns verified report with no-store and nosniff
+ok 187 - server returns verified report with no-store and nosniff
+  ---
+  duration_ms: 1377.6053
+  type: 'test'
+  ...
+# Subtest: server health is authenticated and read-only
+ok 188 - server health is authenticated and read-only
+  ---
+  duration_ms: 1575.1984
+  type: 'test'
+  ...
+# Subtest: server denies every write method and unknown paths
+ok 189 - server denies every write method and unknown paths
+  ---
+  duration_ms: 148.7969
+  type: 'test'
+  ...
+# Subtest: initialize negotiates protocol and names the server
+ok 190 - initialize negotiates protocol and names the server
+  ---
+  duration_ms: 2.1288
+  type: 'test'
+  ...
+# Subtest: tools/list exposes only the six read-only tools
+ok 191 - tools/list exposes only the six read-only tools
+  ---
+  duration_ms: 1.7132
+  type: 'test'
+  ...
+# Subtest: every tool schema forbids extra properties
+ok 192 - every tool schema forbids extra properties
+  ---
+  duration_ms: 0.4152
+  type: 'test'
+  ...
+# Subtest: no tool name suggests a write action
+ok 193 - no tool name suggests a write action
+  ---
+  duration_ms: 0.4384
+  type: 'test'
+  ...
+# Subtest: notifications get no response
+ok 194 - notifications get no response
+  ---
+  duration_ms: 0.2697
+  type: 'test'
+  ...
+# Subtest: invalid request and unknown method
+ok 195 - invalid request and unknown method
+  ---
+  duration_ms: 0.296
+  type: 'test'
+  ...
+# Subtest: unknown tool is a protocol error
+ok 196 - unknown tool is a protocol error
+  ---
+  duration_ms: 0.2676
+  type: 'test'
+  ...
+# Subtest: compare_manifests returns BLOCKED with reasons and no approval
+ok 197 - compare_manifests returns BLOCKED with reasons and no approval
+  ---
+  duration_ms: 40.9503
+  type: 'test'
+  ...
+# Subtest: compare_manifests validates profile
+ok 198 - compare_manifests validates profile
+  ---
+  duration_ms: 9.537
+  type: 'test'
+  ...
+# Subtest: path traversal, absolute paths and null bytes are refused
+ok 199 - path traversal, absolute paths and null bytes are refused
+  ---
+  duration_ms: 1.9395
+  type: 'test'
+  ...
+# Subtest: resolveInRoot keeps paths inside the root
+ok 200 - resolveInRoot keeps paths inside the root
+  ---
+  duration_ms: 2.1172
+  type: 'test'
+  ...
+# Subtest: explain_policy returns rule and rejects bad ids
+ok 201 - explain_policy returns rule and rejects bad ids
+  ---
+  duration_ms: 0.6155
+  type: 'test'
+  ...
+# Subtest: list_policies lists 19 rules and 3 profiles
+ok 202 - list_policies lists 19 rules and 3 profiles
+  ---
+  duration_ms: 1.2792
+  type: 'test'
+  ...
+# Subtest: summarize_plan_actions never returns state values
+ok 203 - summarize_plan_actions never returns state values
+  ---
+  duration_ms: 4.0835
+  type: 'test'
+  ...
+# Subtest: list_rollback_gaps without evidence: nothing ready
+ok 204 - list_rollback_gaps without evidence: nothing ready
+  ---
+  duration_ms: 0.5662
+  type: 'test'
+  ...
+# Subtest: verify_evidence detects tampering
+ok 205 - verify_evidence detects tampering
+  ---
+  duration_ms: 2.8289
+  type: 'test'
+  ...
+# Subtest: 25 skills exist
+ok 206 - 25 skills exist
+  ---
+  duration_ms: 7.739
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-blast-radius: frontmatter name matches folder
+ok 207 - skill deploysutra-blast-radius: frontmatter name matches folder
+  ---
+  duration_ms: 2.8117
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-blast-radius: every command it names exists in the CLI
+ok 208 - skill deploysutra-blast-radius: every command it names exists in the CLI
+  ---
+  duration_ms: 1.5737
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-blast-radius: every rule ID it names exists
+ok 209 - skill deploysutra-blast-radius: every rule ID it names exists
+  ---
+  duration_ms: 1.1785
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-blast-radius: has required sections and no apply instruction
+ok 210 - skill deploysutra-blast-radius: has required sections and no apply instruction
+  ---
+  duration_ms: 1.71
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-canary-evidence: frontmatter name matches folder
+ok 211 - skill deploysutra-canary-evidence: frontmatter name matches folder
+  ---
+  duration_ms: 0.9128
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-canary-evidence: every command it names exists in the CLI
+ok 212 - skill deploysutra-canary-evidence: every command it names exists in the CLI
+  ---
+  duration_ms: 0.8039
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-canary-evidence: every rule ID it names exists
+ok 213 - skill deploysutra-canary-evidence: every rule ID it names exists
+  ---
+  duration_ms: 0.6344
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-canary-evidence: has required sections and no apply instruction
+ok 214 - skill deploysutra-canary-evidence: has required sections and no apply instruction
+  ---
+  duration_ms: 0.6827
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-compliance-witness: frontmatter name matches folder
+ok 215 - skill deploysutra-compliance-witness: frontmatter name matches folder
+  ---
+  duration_ms: 1.306
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-compliance-witness: every command it names exists in the CLI
+ok 216 - skill deploysutra-compliance-witness: every command it names exists in the CLI
+  ---
+  duration_ms: 1.0548
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-compliance-witness: every rule ID it names exists
+ok 217 - skill deploysutra-compliance-witness: every rule ID it names exists
+  ---
+  duration_ms: 0.5767
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-compliance-witness: has required sections and no apply instruction
+ok 218 - skill deploysutra-compliance-witness: has required sections and no apply instruction
+  ---
+  duration_ms: 0.5105
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-deploy-diff: frontmatter name matches folder
+ok 219 - skill deploysutra-deploy-diff: frontmatter name matches folder
+  ---
+  duration_ms: 1.529
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-deploy-diff: every command it names exists in the CLI
+ok 220 - skill deploysutra-deploy-diff: every command it names exists in the CLI
+  ---
+  duration_ms: 1.8294
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-deploy-diff: every rule ID it names exists
+ok 221 - skill deploysutra-deploy-diff: every rule ID it names exists
+  ---
+  duration_ms: 0.7498
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-deploy-diff: has required sections and no apply instruction
+ok 222 - skill deploysutra-deploy-diff: has required sections and no apply instruction
+  ---
+  duration_ms: 3.0983
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-diff-sentinel: frontmatter name matches folder
+ok 223 - skill deploysutra-diff-sentinel: frontmatter name matches folder
+  ---
+  duration_ms: 1.3088
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-diff-sentinel: every command it names exists in the CLI
+ok 224 - skill deploysutra-diff-sentinel: every command it names exists in the CLI
+  ---
+  duration_ms: 0.616
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-diff-sentinel: every rule ID it names exists
+ok 225 - skill deploysutra-diff-sentinel: every rule ID it names exists
+  ---
+  duration_ms: 0.5954
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-diff-sentinel: has required sections and no apply instruction
+ok 226 - skill deploysutra-diff-sentinel: has required sections and no apply instruction
+  ---
+  duration_ms: 0.9836
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-drift-witness: frontmatter name matches folder
+ok 227 - skill deploysutra-drift-witness: frontmatter name matches folder
+  ---
+  duration_ms: 0.9712
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-drift-witness: every command it names exists in the CLI
+ok 228 - skill deploysutra-drift-witness: every command it names exists in the CLI
+  ---
+  duration_ms: 1.2439
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-drift-witness: every rule ID it names exists
+ok 229 - skill deploysutra-drift-witness: every rule ID it names exists
+  ---
+  duration_ms: 0.7165
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-drift-witness: has required sections and no apply instruction
+ok 230 - skill deploysutra-drift-witness: has required sections and no apply instruction
+  ---
+  duration_ms: 0.4603
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-environment-atlas: frontmatter name matches folder
+ok 231 - skill deploysutra-environment-atlas: frontmatter name matches folder
+  ---
+  duration_ms: 0.5719
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-environment-atlas: every command it names exists in the CLI
+ok 232 - skill deploysutra-environment-atlas: every command it names exists in the CLI
+  ---
+  duration_ms: 0.4732
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-environment-atlas: every rule ID it names exists
+ok 233 - skill deploysutra-environment-atlas: every rule ID it names exists
+  ---
+  duration_ms: 0.4683
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-environment-atlas: has required sections and no apply instruction
+ok 234 - skill deploysutra-environment-atlas: has required sections and no apply instruction
+  ---
+  duration_ms: 0.3658
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-health-gate: frontmatter name matches folder
+ok 235 - skill deploysutra-health-gate: frontmatter name matches folder
+  ---
+  duration_ms: 0.5917
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-health-gate: every command it names exists in the CLI
+ok 236 - skill deploysutra-health-gate: every command it names exists in the CLI
+  ---
+  duration_ms: 0.3829
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-health-gate: every rule ID it names exists
+ok 237 - skill deploysutra-health-gate: every rule ID it names exists
+  ---
+  duration_ms: 0.3774
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-health-gate: has required sections and no apply instruction
+ok 238 - skill deploysutra-health-gate: has required sections and no apply instruction
+  ---
+  duration_ms: 0.3236
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-iac-interpreter: frontmatter name matches folder
+ok 239 - skill deploysutra-iac-interpreter: frontmatter name matches folder
+  ---
+  duration_ms: 0.5008
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-iac-interpreter: every command it names exists in the CLI
+ok 240 - skill deploysutra-iac-interpreter: every command it names exists in the CLI
+  ---
+  duration_ms: 0.4108
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-iac-interpreter: every rule ID it names exists
+ok 241 - skill deploysutra-iac-interpreter: every rule ID it names exists
+  ---
+  duration_ms: 0.3108
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-iac-interpreter: has required sections and no apply instruction
+ok 242 - skill deploysutra-iac-interpreter: has required sections and no apply instruction
+  ---
+  duration_ms: 0.2655
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-iac-sanity: frontmatter name matches folder
+ok 243 - skill deploysutra-iac-sanity: frontmatter name matches folder
+  ---
+  duration_ms: 0.3974
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-iac-sanity: every command it names exists in the CLI
+ok 244 - skill deploysutra-iac-sanity: every command it names exists in the CLI
+  ---
+  duration_ms: 0.2811
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-iac-sanity: every rule ID it names exists
+ok 245 - skill deploysutra-iac-sanity: every rule ID it names exists
+  ---
+  duration_ms: 0.2363
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-iac-sanity: has required sections and no apply instruction
+ok 246 - skill deploysutra-iac-sanity: has required sections and no apply instruction
+  ---
+  duration_ms: 0.2612
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-ide-bridge: frontmatter name matches folder
+ok 247 - skill deploysutra-ide-bridge: frontmatter name matches folder
+  ---
+  duration_ms: 0.5108
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-ide-bridge: every command it names exists in the CLI
+ok 248 - skill deploysutra-ide-bridge: every command it names exists in the CLI
+  ---
+  duration_ms: 0.5268
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-ide-bridge: every rule ID it names exists
+ok 249 - skill deploysutra-ide-bridge: every rule ID it names exists
+  ---
+  duration_ms: 0.3775
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-ide-bridge: has required sections and no apply instruction
+ok 250 - skill deploysutra-ide-bridge: has required sections and no apply instruction
+  ---
+  duration_ms: 0.4506
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-kubernetes-mapper: frontmatter name matches folder
+ok 251 - skill deploysutra-kubernetes-mapper: frontmatter name matches folder
+  ---
+  duration_ms: 0.4793
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-kubernetes-mapper: every command it names exists in the CLI
+ok 252 - skill deploysutra-kubernetes-mapper: every command it names exists in the CLI
+  ---
+  duration_ms: 0.3871
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-kubernetes-mapper: every rule ID it names exists
+ok 253 - skill deploysutra-kubernetes-mapper: every rule ID it names exists
+  ---
+  duration_ms: 0.2695
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-kubernetes-mapper: has required sections and no apply instruction
+ok 254 - skill deploysutra-kubernetes-mapper: has required sections and no apply instruction
+  ---
+  duration_ms: 0.3002
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-policy-judge: frontmatter name matches folder
+ok 255 - skill deploysutra-policy-judge: frontmatter name matches folder
+  ---
+  duration_ms: 0.644
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-policy-judge: every command it names exists in the CLI
+ok 256 - skill deploysutra-policy-judge: every command it names exists in the CLI
+  ---
+  duration_ms: 0.5164
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-policy-judge: every rule ID it names exists
+ok 257 - skill deploysutra-policy-judge: every rule ID it names exists
+  ---
+  duration_ms: 0.3922
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-policy-judge: has required sections and no apply instruction
+ok 258 - skill deploysutra-policy-judge: has required sections and no apply instruction
+  ---
+  duration_ms: 0.5562
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-preview-environment: frontmatter name matches folder
+ok 259 - skill deploysutra-preview-environment: frontmatter name matches folder
+  ---
+  duration_ms: 0.7245
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-preview-environment: every command it names exists in the CLI
+ok 260 - skill deploysutra-preview-environment: every command it names exists in the CLI
+  ---
+  duration_ms: 0.4481
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-preview-environment: every rule ID it names exists
+ok 261 - skill deploysutra-preview-environment: every rule ID it names exists
+  ---
+  duration_ms: 0.355
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-preview-environment: has required sections and no apply instruction
+ok 262 - skill deploysutra-preview-environment: has required sections and no apply instruction
+  ---
+  duration_ms: 0.3982
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-prime: frontmatter name matches folder
+ok 263 - skill deploysutra-prime: frontmatter name matches folder
+  ---
+  duration_ms: 0.4344
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-prime: every command it names exists in the CLI
+ok 264 - skill deploysutra-prime: every command it names exists in the CLI
+  ---
+  duration_ms: 0.3387
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-prime: every rule ID it names exists
+ok 265 - skill deploysutra-prime: every rule ID it names exists
+  ---
+  duration_ms: 1.1176
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-prime: has required sections and no apply instruction
+ok 266 - skill deploysutra-prime: has required sections and no apply instruction
+  ---
+  duration_ms: 0.4871
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-public-exposure-guard: frontmatter name matches folder
+ok 267 - skill deploysutra-public-exposure-guard: frontmatter name matches folder
+  ---
+  duration_ms: 0.6889
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-public-exposure-guard: every command it names exists in the CLI
+ok 268 - skill deploysutra-public-exposure-guard: every command it names exists in the CLI
+  ---
+  duration_ms: 0.7256
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-public-exposure-guard: every rule ID it names exists
+ok 269 - skill deploysutra-public-exposure-guard: every rule ID it names exists
+  ---
+  duration_ms: 0.7374
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-public-exposure-guard: has required sections and no apply instruction
+ok 270 - skill deploysutra-public-exposure-guard: has required sections and no apply instruction
+  ---
+  duration_ms: 0.4084
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-rbac-guardian: frontmatter name matches folder
+ok 271 - skill deploysutra-rbac-guardian: frontmatter name matches folder
+  ---
+  duration_ms: 0.6516
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-rbac-guardian: every command it names exists in the CLI
+ok 272 - skill deploysutra-rbac-guardian: every command it names exists in the CLI
+  ---
+  duration_ms: 0.444
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-rbac-guardian: every rule ID it names exists
+ok 273 - skill deploysutra-rbac-guardian: every rule ID it names exists
+  ---
+  duration_ms: 0.3611
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-rbac-guardian: has required sections and no apply instruction
+ok 274 - skill deploysutra-rbac-guardian: has required sections and no apply instruction
+  ---
+  duration_ms: 0.3936
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-release-auditor: frontmatter name matches folder
+ok 275 - skill deploysutra-release-auditor: frontmatter name matches folder
+  ---
+  duration_ms: 0.5086
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-release-auditor: every command it names exists in the CLI
+ok 276 - skill deploysutra-release-auditor: every command it names exists in the CLI
+  ---
+  duration_ms: 0.3815
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-release-auditor: every rule ID it names exists
+ok 277 - skill deploysutra-release-auditor: every rule ID it names exists
+  ---
+  duration_ms: 0.2877
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-release-auditor: has required sections and no apply instruction
+ok 278 - skill deploysutra-release-auditor: has required sections and no apply instruction
+  ---
+  duration_ms: 0.3309
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-resource-budget: frontmatter name matches folder
+ok 279 - skill deploysutra-resource-budget: frontmatter name matches folder
+  ---
+  duration_ms: 0.4751
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-resource-budget: every command it names exists in the CLI
+ok 280 - skill deploysutra-resource-budget: every command it names exists in the CLI
+  ---
+  duration_ms: 0.3474
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-resource-budget: every rule ID it names exists
+ok 281 - skill deploysutra-resource-budget: every rule ID it names exists
+  ---
+  duration_ms: 0.3026
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-resource-budget: has required sections and no apply instruction
+ok 282 - skill deploysutra-resource-budget: has required sections and no apply instruction
+  ---
+  duration_ms: 0.313
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-rollback-architect: frontmatter name matches folder
+ok 283 - skill deploysutra-rollback-architect: frontmatter name matches folder
+  ---
+  duration_ms: 0.4867
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-rollback-architect: every command it names exists in the CLI
+ok 284 - skill deploysutra-rollback-architect: every command it names exists in the CLI
+  ---
+  duration_ms: 0.2969
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-rollback-architect: every rule ID it names exists
+ok 285 - skill deploysutra-rollback-architect: every rule ID it names exists
+  ---
+  duration_ms: 0.2283
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-rollback-architect: has required sections and no apply instruction
+ok 286 - skill deploysutra-rollback-architect: has required sections and no apply instruction
+  ---
+  duration_ms: 0.2717
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-rollback-plan: frontmatter name matches folder
+ok 287 - skill deploysutra-rollback-plan: frontmatter name matches folder
+  ---
+  duration_ms: 0.445
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-rollback-plan: every command it names exists in the CLI
+ok 288 - skill deploysutra-rollback-plan: every command it names exists in the CLI
+  ---
+  duration_ms: 0.7171
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-rollback-plan: every rule ID it names exists
+ok 289 - skill deploysutra-rollback-plan: every rule ID it names exists
+  ---
+  duration_ms: 0.8335
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-rollback-plan: has required sections and no apply instruction
+ok 290 - skill deploysutra-rollback-plan: has required sections and no apply instruction
+  ---
+  duration_ms: 0.3535
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-rollout-guard: frontmatter name matches folder
+ok 291 - skill deploysutra-rollout-guard: frontmatter name matches folder
+  ---
+  duration_ms: 0.516
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-rollout-guard: every command it names exists in the CLI
+ok 292 - skill deploysutra-rollout-guard: every command it names exists in the CLI
+  ---
+  duration_ms: 0.3564
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-rollout-guard: every rule ID it names exists
+ok 293 - skill deploysutra-rollout-guard: every rule ID it names exists
+  ---
+  duration_ms: 0.3358
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-rollout-guard: has required sections and no apply instruction
+ok 294 - skill deploysutra-rollout-guard: has required sections and no apply instruction
+  ---
+  duration_ms: 0.3109
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-rollout-planner: frontmatter name matches folder
+ok 295 - skill deploysutra-rollout-planner: frontmatter name matches folder
+  ---
+  duration_ms: 0.4555
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-rollout-planner: every command it names exists in the CLI
+ok 296 - skill deploysutra-rollout-planner: every command it names exists in the CLI
+  ---
+  duration_ms: 0.3827
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-rollout-planner: every rule ID it names exists
+ok 297 - skill deploysutra-rollout-planner: every rule ID it names exists
+  ---
+  duration_ms: 0.2707
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-rollout-planner: has required sections and no apply instruction
+ok 298 - skill deploysutra-rollout-planner: has required sections and no apply instruction
+  ---
+  duration_ms: 0.3337
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-secret-boundary: frontmatter name matches folder
+ok 299 - skill deploysutra-secret-boundary: frontmatter name matches folder
+  ---
+  duration_ms: 0.4218
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-secret-boundary: every command it names exists in the CLI
+ok 300 - skill deploysutra-secret-boundary: every command it names exists in the CLI
+  ---
+  duration_ms: 0.3112
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-secret-boundary: every rule ID it names exists
+ok 301 - skill deploysutra-secret-boundary: every rule ID it names exists
+  ---
+  duration_ms: 0.5333
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-secret-boundary: has required sections and no apply instruction
+ok 302 - skill deploysutra-secret-boundary: has required sections and no apply instruction
+  ---
+  duration_ms: 0.3664
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-workload-security: frontmatter name matches folder
+ok 303 - skill deploysutra-workload-security: frontmatter name matches folder
+  ---
+  duration_ms: 0.4826
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-workload-security: every command it names exists in the CLI
+ok 304 - skill deploysutra-workload-security: every command it names exists in the CLI
+  ---
+  duration_ms: 0.3023
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-workload-security: every rule ID it names exists
+ok 305 - skill deploysutra-workload-security: every rule ID it names exists
+  ---
+  duration_ms: 0.33
+  type: 'test'
+  ...
+# Subtest: skill deploysutra-workload-security: has required sections and no apply instruction
+ok 306 - skill deploysutra-workload-security: has required sections and no apply instruction
+  ---
+  duration_ms: 0.3501
+  type: 'test'
+  ...
+# Subtest: every rule is referenced by at least one skill
+ok 307 - every rule is referenced by at least one skill
+  ---
+  duration_ms: 7.1026
+  type: 'test'
+  ...
+# Subtest: manifest lists 20 specialists with existing files and 5 capabilities
+ok 308 - manifest lists 20 specialists with existing files and 5 capabilities
+  ---
+  duration_ms: 5.3582
+  type: 'test'
+  ...
+# Subtest: eight workflows and ten rule files exist
+ok 309 - eight workflows and ten rule files exist
+  ---
+  duration_ms: 0.6984
+  type: 'test'
+  ...
+# Subtest: no mandatory npm dependencies
+ok 310 - no mandatory npm dependencies
+  ---
+  duration_ms: 0.8896
+  type: 'test'
+  ...
+# Subtest: package.json is publishable and consistent
+ok 311 - package.json is publishable and consistent
+  ---
+  duration_ms: 3.6339
+  type: 'test'
+  ...
+# Subtest: no token-shaped secrets anywhere in the repo text
+ok 312 - no token-shaped secrets anywhere in the repo text
+  ---
+  duration_ms: 39.2741
+  type: 'test'
+  ...
+1..312
+# tests 312
+# suites 0
+# pass 308
+# fail 0
+# cancelled 0
+# skipped 4
+# todo 0
+# duration_ms 172631.0941

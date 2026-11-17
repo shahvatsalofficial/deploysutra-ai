@@ -1,0 +1,102 @@
+# DeploySutra AI - Kubernetes desired-state review
+
+**Gate:** BLOCKED (NEVER an authorization to deploy)  
+Do not proceed until every reason below is resolved or consciously accepted by a human operator.
+
+## Why
+
+- New HIGH finding DS-K8S-003 on Deployment/demo/checkout
+- New HIGH finding DS-K8S-004 on Deployment/demo/checkout
+- New HIGH finding DS-K8S-005 on Deployment/demo/checkout
+- New HIGH finding DS-K8S-009 on Deployment/demo/checkout
+- Rollback evidence missing: backup_verified, restore_test, operator_approval
+
+**Profile:** staging (default; blocks on HIGH)  
+**Resources:** 1 before, 1 after (0 added, 0 removed, 1 changed)  
+**Source before:** fixtures/k8s/before.yaml (sha256 2a65e8ddb122…)  
+**Source after:** fixtures/k8s/after.yaml (sha256 c779a5e5df32…)
+
+## Findings
+
+| Rule | Severity | Status | Resource | Message | Where |
+| --- | --- | --- | --- | --- | --- |
+| DS-K8S-003 | HIGH | new | Deployment/demo/checkout | Host network access enabled | fixtures/k8s/after.yaml:13 |
+| DS-K8S-004 | HIGH | new | Deployment/demo/checkout | Container is privileged | fixtures/k8s/after.yaml:18 |
+| DS-K8S-005 | HIGH | new | Deployment/demo/checkout | Privilege escalation enabled | fixtures/k8s/after.yaml:19 |
+| DS-K8S-006 | MEDIUM | new | Deployment/demo/checkout | Container explicitly runs as UID 0 | fixtures/k8s/after.yaml:20 |
+| DS-K8S-007 | MEDIUM | new | Deployment/demo/checkout | Unpinned or latest container image | fixtures/k8s/after.yaml:16 |
+| DS-K8S-008 | MEDIUM | new | Deployment/demo/checkout | Container has no declared resource limits | fixtures/k8s/after.yaml:15 (nearest parent) |
+| DS-K8S-009 | HIGH | new | Deployment/demo/checkout | Replicas set to zero; the service will have no running instances | fixtures/k8s/after.yaml:7 |
+| DS-K8S-016 | LOW | persistent | Deployment/demo/checkout | Container has no readinessProbe | fixtures/k8s/after.yaml:15 |
+| DS-K8S-017 | LOW | persistent | Deployment/demo/checkout | runAsNonRoot is not enforced | fixtures/k8s/after.yaml:17 |
+
+## Changes (desired state)
+
+| Resource | What | Change | Before | After | Where |
+| --- | --- | --- | --- | --- | --- |
+| Deployment/demo/checkout | replicas (spec.replicas) | changed | 3 | 0 | fixtures/k8s/after.yaml:7 |
+| Deployment/demo/checkout | update strategy (spec.strategy.type) | changed | RollingUpdate | Recreate | fixtures/k8s/after.yaml:9 |
+| Deployment/demo/checkout | container image (spec.template.spec.containers[checkout].image) | changed | example/checkout:1.0.0 | example/checkout:latest | fixtures/k8s/after.yaml:16 |
+| Deployment/demo/checkout | resource limit (spec.template.spec.containers[checkout].resources.limits.cpu) | removed | 500m | [absent] | fixtures/k8s/before.yaml:19 |
+| Deployment/demo/checkout | resource limit (spec.template.spec.containers[checkout].resources.limits.memory) | removed | 256Mi | [absent] | fixtures/k8s/before.yaml:20 |
+| Deployment/demo/checkout | privilege escalation (spec.template.spec.containers[checkout].securityContext.allowPrivilegeEscalation) | changed | false | true | fixtures/k8s/after.yaml:19 |
+| Deployment/demo/checkout | privileged container (spec.template.spec.containers[checkout].securityContext.privileged) | changed | false | true | fixtures/k8s/after.yaml:18 |
+| Deployment/demo/checkout | run-as user (spec.template.spec.containers[checkout].securityContext.runAsUser) | changed | 10001 | 0 | fixtures/k8s/after.yaml:20 |
+| Deployment/demo/checkout | host networking (spec.template.spec.hostNetwork) | changed | false | true | fixtures/k8s/after.yaml:13 |
+| Deployment/demo/checkout | service identity (spec.template.spec.serviceAccountName) | changed | checkout-readonly | checkout-admin | fixtures/k8s/after.yaml:12 |
+
+## Blast-radius questions
+
+- Replica count changed: verify availability and service scaling
+- Update strategy changed: confirm the surge/unavailable behaviour is safe for this service
+- Workload image changed: check health signals, compatibility, and rollout readiness
+- Privilege-related field changed: confirm the container really needs it
+- Service identity changed: independently verify RBAC and external permissions
+- High-risk static rule triggered; deployment approval must remain blocked
+
+## BlastMap (edges derived only from supplied manifests)
+
+| From | Relation | To | Certainty |
+| --- | --- | --- | --- |
+| Deployment/demo/checkout | runs-as | ServiceAccount/demo/checkout-admin | declared-target-not-supplied |
+
+### Directly connected to changed resources
+
+| Changed | Connected | How |
+| --- | --- | --- |
+| Deployment/demo/checkout | ServiceAccount/demo/checkout-admin | this runs-as ServiceAccount |
+
+## Rollback prerequisites
+
+- [ ] Evidence of known previous deployable revision: **DECLARED_NOT_VERIFIED**
+- [ ] Independent backup validity evidence: **MISSING**
+- [ ] Actual successful restore test evidence: **MISSING**
+- [ ] Documented rollback sequence: **DECLARED_NOT_VERIFIED**
+- [ ] Independent authorized operator approval evidence: **MISSING**
+
+> Rollback readiness is not established by declarations alone; a restore drill and human sign-off are required
+
+## Verification boundaries
+
+| Check | State |
+| --- | --- |
+| manifestParsing | VERIFIED_STATIC |
+| policyRules | VERIFIED_STATIC |
+| environmentDrift | NOT_TESTED |
+| liveRBAC | NOT_TESTED |
+| clusterDryRun | NOT_RUN |
+| workloadHealth | NOT_RUN |
+| realRollback | NOT_RUN |
+| humanApproval | NOT_VERIFIED |
+
+## Limitations
+
+- This compares two local desired-state snapshots, not observed live drift.
+- The built-in YAML parser supports a strict subset (no anchors, tags, templates, block scalars or nested flow collections); unsupported syntax fails loudly.
+- Policy checks are heuristic static rules, not authoritative validation, admission control or compliance certification.
+- Admission mutation, defaulting, controllers, image tag drift and real traffic exposure are not modelled.
+- Dependency edges come only from the supplied manifests; anything else is reported UNKNOWN.
+- No Kubernetes/cloud connection, deployment, destructive command, or rollback was executed.
+
+Report SHA-256 (unkeyed, tamper evidence only): `9715f8ddd2df3f7ce7bf70798a567306bdef9d68d9bc57c58d827f5825bbe05b`  
+Tool: deploysutra-ai 0.2.0 by Vatsal Shah

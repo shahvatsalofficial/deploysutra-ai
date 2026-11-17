@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: checkout
+  namespace: demo
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+  template:
+    spec:
+      serviceAccountName: checkout-readonly
+      hostNetwork: false
+      containers:
+        - name: checkout
+          image: example/checkout:1.0.0
+          resources:
+            limits:
+              cpu: '500m'
+              memory: '256Mi'
+          securityContext:
+            privileged: false
+            allowPrivilegeEscalation: false
+            runAsUser: 10001

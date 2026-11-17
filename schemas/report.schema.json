@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/shahvatsalofficial/deploysutra-ai/schemas/report.schema.json",
+  "title": "DeploySutra report (schemaVersion 2.0)",
+  "description": "Common envelope for every sealed DeploySutra report. The gate has exactly two states and neither is an approval to deploy.",
+  "type": "object",
+  "required": ["schemaVersion", "product", "productVersion", "scope", "checks", "limitations", "integrity"],
+  "properties": {
+    "schemaVersion": {"const": "2.0"},
+    "product": {"const": "DeploySutra AI"},
+    "productVersion": {"type": "string"},
+    "scope": {"enum": ["OFFLINE_STATIC_K8S", "IMPORTED_TOFU_PLAN_ACTIONS_ONLY", "SELF_AUDIT"]},
+    "gate": {"enum": ["BLOCKED", "HUMAN_REVIEW_REQUIRED"]},
+    "gateReasons": {"type": "array", "items": {"type": "string"}},
+    "checks": {"type": "object", "additionalProperties": {"enum": ["VERIFIED_STATIC", "EXECUTED_VERIFIED", "DECLARED_NOT_VERIFIED", "NOT_TESTED", "NOT_RUN", "NOT_VERIFIED", "FAILED", "PARTIAL_TRUNCATED"]}},
+    "limitations": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "integrity": {
+      "type": "object",
+      "required": ["algorithm", "digest", "meaning"],
+      "properties": {"algorithm": {"const": "SHA-256"}, "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "meaning": {"type": "string"}}
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"scope": {"const": "OFFLINE_STATIC_K8S"}}},
+      "then": {
+        "required": ["gate", "profile", "diffs", "policyFindings", "blastMap", "rollback", "resourceCounts"],
+        "properties": {
+          "profile": {"type": "object", "required": ["name", "selection", "blockOn"], "properties": {"name": {"enum": ["development", "staging", "production"]}, "selection": {"enum": ["default", "explicit"]}}},
+          "policyFindings": {"type": "array", "items": {"type": "object", "required": ["id", "severity", "status", "resource", "source", "lineConfidence"], "properties": {"id": {"pattern": "^DS-K8S-\\d{3}$"}, "severity": {"enum": ["HIGH", "MEDIUM", "LOW"]}, "status": {"enum": ["new", "persistent"]}, "lineConfidence": {"enum": ["exact", "parent", "unknown"]}}}},
+          "rollback": {"type": "object", "required": ["checks", "ready"], "properties": {"ready": {"const": false}}}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"scope": {"const": "IMPORTED_TOFU_PLAN_ACTIONS_ONLY"}}},
+      "then": {"required": ["gate", "counts", "byType", "dangerousChangeCount", "truncated"], "properties": {"truncated": {"type": "boolean"}}}
+    },
+    {
+      "if": {"properties": {"scope": {"const": "SELF_AUDIT"}}},
+      "then": {"required": ["overall", "totals", "sections", "statement", "generatedAt", "environment", "reproduce", "limits"], "properties": {"overall": {"enum": ["PASS", "PASS_WITH_NOT_RUN", "FAIL"]}}}
+    }
+  ]
+}

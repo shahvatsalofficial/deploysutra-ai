@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hardened
+  namespace: demo
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+        - name: app
+          image: registry.example.com/app@sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false

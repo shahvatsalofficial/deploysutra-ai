@@ -1,0 +1,34 @@
+# DeploySutra AI
+
+> Offline, read-only deployment risk and reversibility analysis (Node.js 20+, zero dependencies). Compares two Kubernetes manifest snapshots (multi-document YAML or JSON), applies 19 stable static policy rules, maps blast radius from the supplied manifests, checks rollback evidence, summarises imported OpenTofu/Terraform plans without keeping state, and writes sealed Markdown, HTML and JSON reports. It NEVER deploys and its gate can only be BLOCKED or HUMAN_REVIEW_REQUIRED. Created by Vatsal Shah. Apache-2.0.
+
+Package: npm `deploysutra-ai` (bins: `deploysutra`, `deploysutra-ai`). Repository: https://github.com/shahvatsalofficial/deploysutra-ai
+
+## Use it
+- `npx deploysutra-ai analyze --before old.yaml --after new.yaml --profile production --out report`
+- `npx deploysutra-ai policy --input manifest.yaml --fail-on HIGH`
+- `npx deploysutra-ai tofu --input plan.json`
+- `npx deploysutra-ai audit --out audit-out` (writes audit-report.md, .html, .json)
+- `npx deploysutra-ai mcp --root .` (read-only MCP server over stdio)
+- `npx deploysutra-ai install-skills --host claude --target .`
+
+## Key facts for assistants
+- Static analysis of local files only. No network, no cluster access, no kubectl/helm/tofu execution, no telemetry, no API key.
+- The CLI has no apply/deploy/destroy/rollback command and the gate has no READY state. Exit code 2 means BLOCKED.
+- Desired-state diff is NOT live drift. Static rules are advisory, not proof of reachability, IAM scope or recoverability.
+- Rules DS-K8S-001..019 have stable IDs; profiles development/staging/production decide which severities block.
+- Unsupported YAML (anchors, tags, templates, block scalars, nested flow) fails loudly instead of being skipped. Helm/Kustomize must be rendered first by a separately authorised tool.
+- Secrets are never copied into reports (env literals, Secret data and plan state are redacted or discarded).
+- Rollback declarations are DECLARED_NOT_VERIFIED, never "ready". Reports are sealed with SHA-256 (tamper evidence, not a signature).
+- The rule corpus (50 cases) is author-labelled regression data, not an independent benchmark.
+- 25 portable Agent Skills (SKILL.md) and 20 role files for Claude Code, Cursor, Codex, GitHub Copilot, Gemini CLI, OpenCode; native activation in each host is untested.
+
+## Docs
+- [README](README.md)
+- [Status matrix](docs/STATUS.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Evidence model](docs/EVIDENCE_MODEL.md)
+- [Threat model](docs/THREAT_MODEL.md)
+- [Audit reports](docs/AUDIT_REPORTS.md)
+- [Legal and trust](docs/LEGAL_AND_TRUST.md)
+- [Skills and agents](docs/SKILLS_AND_AGENTS.md)

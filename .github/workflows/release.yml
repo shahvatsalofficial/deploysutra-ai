@@ -1,0 +1,33 @@
+name: Release
+on:
+  push:
+    tags: ['v*.*.*']
+  workflow_dispatch:
+permissions:
+  contents: write
+  id-token: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm test
+      - name: Verify tag matches package version
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: test "v$(node -p "require('./package.json').version")" = "${GITHUB_REF_NAME}"
+      - name: Check whether this version is already on npm
+        id: published
+        run: |
+          V=$(node -p "require('./package.json').version")
+          if npm view "deploysutra-ai@${V}" version >/dev/null 2>&1; then echo "already=true" >> "$GITHUB_OUTPUT"; echo "deploysutra-ai@${V} is already published; nothing to do."; else echo "already=false" >> "$GITHUB_OUTPUT"; fi
+      - name: Use npm with trusted-publishing (OIDC) support
+        if: steps.published.outputs.already == 'false'
+        run: npm install -g npm@latest
+      - name: Publish to npm (trusted publishing, no stored token)
+        if: steps.published.outputs.already == 'false'
+        run: npm publish --provenance --access public

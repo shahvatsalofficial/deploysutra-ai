@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "2.0",
+  "product": "DeploySutra AI",
+  "productVersion": "0.2.0",
+  "scope": "IMPORTED_TOFU_PLAN_ACTIONS_ONLY",
+  "formatVersion": "1.2",
+  "changeCount": 2,
+  "totalChangesInInput": 2,
+  "truncated": false,
+  "counts": {
+    "create": 1,
+    "update": 1,
+    "delete": 1,
+    "no_op": 0,
+    "read": 0,
+    "forget": 0,
+    "replace": 1
+  },
+  "byType": {
+    "aws_db_instance": {
+      "create": 1,
+      "update": 0,
+      "delete": 1,
+      "replace": 1
+    },
+    "aws_security_group": {
+      "create": 0,
+      "update": 1,
+      "delete": 0,
+      "replace": 0
+    }
+  },
+  "resourceTypes": [
+    "aws_db_instance",
+    "aws_security_group"
+  ],
+  "dangerousChangeCount": 1,
+  "dataBearingDestructiveCount": 1,
+  "ignoredSensitiveSections": [],
+  "gate": "BLOCKED",
+  "gateReasons": [
+    "1 destructive change(s) on data-bearing resource types (name heuristic); restore evidence is not part of a plan"
+  ],
+  "checks": {
+    "planAuthenticity": "NOT_VERIFIED",
+    "dryRunExecutedHere": "NOT_RUN",
+    "providerPermissions": "NOT_TESTED",
+    "rollback": "NOT_TESTED",
+    "planCompleteness": "VERIFIED_STATIC"
+  },
+  "limitations": [
+    "Source plan input may contain secrets; only resource type and action summaries are retained in output. Resource addresses, values, providers and state are discarded.",
+    "Data-bearing detection is a resource-type name heuristic, not knowledge of what the resource stores.",
+    "No plan was executed or confirmed against a live workspace."
+  ],
+  "integrity": {
+    "algorithm": "SHA-256",
+    "digest": "bed1b2aeef85b7b3c209777277ea0926ddfedd16b3ee2c96a56f3ad2895d8478",
+    "meaning": "Unkeyed integrity checksum, NOT a signature or proof of authenticity"
+  }
+}
