@@ -1,0 +1,171 @@
+{
+  "schemaVersion": "2.0",
+  "product": "DeploySutra AI",
+  "productVersion": "0.2.0",
+  "rulesVersion": "2.0",
+  "scope": "OFFLINE_STATIC_K8S",
+  "profile": {
+    "name": "staging",
+    "selection": "default",
+    "blockOn": [
+      "HIGH"
+    ]
+  },
+  "source": {
+    "before": {
+      "path": "fixtures/k8s/service-before.yaml",
+      "sha256": "a83bb6a861b2a73cbc6d00a907b6c1aa5c77ec1e5628c3a08de96f79dcbeb3b2",
+      "bytes": 112
+    },
+    "after": {
+      "path": "fixtures/k8s/service-after.yaml",
+      "sha256": "83372a0c08fbebcf8761d5aaa81fb1aa579c5d61f58fddd89711a8014bffc879",
+      "bytes": 115
+    }
+  },
+  "identity": {
+    "kind": "Service",
+    "name": "checkout-service",
+    "namespace": "default"
+  },
+  "resourceCounts": {
+    "before": 1,
+    "after": 1,
+    "added": 0,
+    "removed": 0,
+    "changed": 1
+  },
+  "resources": [
+    {
+      "resource": "Service/default/checkout-service",
+      "status": "changed",
+      "diffCount": 1
+    }
+  ],
+  "diffs": [
+    {
+      "id": "DS-DIFF-c2bdd121e",
+      "resource": "Service/default/checkout-service",
+      "path": "spec.type",
+      "label": "service exposure",
+      "risk": "exposure",
+      "change": "changed",
+      "before": "ClusterIP",
+      "after": "LoadBalancer",
+      "redacted": false,
+      "source": "fixtures/k8s/service-after.yaml",
+      "line": 6,
+      "lineConfidence": "exact",
+      "evidence": "static-manifest-diff",
+      "scope": "desired-state-only"
+    }
+  ],
+  "policyFindings": [
+    {
+      "id": "DS-K8S-001",
+      "severity": "HIGH",
+      "title": "Public Service exposure",
+      "message": "Service type LoadBalancer may create public ingress; network policies and cloud ACLs are not validated",
+      "field": "spec.type",
+      "resource": "Service/default/checkout-service",
+      "source": "fixtures/k8s/service-after.yaml",
+      "line": 6,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Confirm intended audience; prefer ClusterIP behind a reviewed Ingress; verify firewall/ACLs.",
+      "status": "new"
+    }
+  ],
+  "newPolicyFindings": [
+    {
+      "id": "DS-K8S-001",
+      "severity": "HIGH",
+      "title": "Public Service exposure",
+      "message": "Service type LoadBalancer may create public ingress; network policies and cloud ACLs are not validated",
+      "field": "spec.type",
+      "resource": "Service/default/checkout-service",
+      "source": "fixtures/k8s/service-after.yaml",
+      "line": 6,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Confirm intended audience; prefer ClusterIP behind a reviewed Ingress; verify firewall/ACLs.",
+      "status": "new"
+    }
+  ],
+  "persistentPolicyFindings": [],
+  "blastMap": {
+    "nodes": [
+      {
+        "id": "Service/default/checkout-service",
+        "kind": "Service",
+        "status": "SUPPLIED"
+      }
+    ],
+    "edges": []
+  },
+  "impactedByChange": [],
+  "blastRadius": [
+    "Service exposure changed: review traffic/security blast radius",
+    "High-risk static rule triggered; deployment approval must remain blocked"
+  ],
+  "rollback": {
+    "source": "not supplied",
+    "checks": [
+      {
+        "id": "prior_revision",
+        "status": "MISSING",
+        "description": "Evidence of known previous deployable revision"
+      },
+      {
+        "id": "backup_verified",
+        "status": "MISSING",
+        "description": "Independent backup validity evidence"
+      },
+      {
+        "id": "restore_test",
+        "status": "MISSING",
+        "description": "Actual successful restore test evidence"
+      },
+      {
+        "id": "rollback_procedure",
+        "status": "MISSING",
+        "description": "Documented rollback sequence"
+      },
+      {
+        "id": "operator_approval",
+        "status": "MISSING",
+        "description": "Independent authorized operator approval evidence"
+      }
+    ],
+    "ready": false,
+    "reason": "Rollback readiness is not established by declarations alone; a restore drill and human sign-off are required"
+  },
+  "gate": "BLOCKED",
+  "gateReasons": [
+    "New HIGH finding DS-K8S-001 on Service/default/checkout-service",
+    "Rollback evidence missing: prior_revision, backup_verified, restore_test, rollback_procedure, operator_approval"
+  ],
+  "checks": {
+    "manifestParsing": "VERIFIED_STATIC",
+    "policyRules": "VERIFIED_STATIC",
+    "environmentDrift": "NOT_TESTED",
+    "liveRBAC": "NOT_TESTED",
+    "clusterDryRun": "NOT_RUN",
+    "workloadHealth": "NOT_RUN",
+    "realRollback": "NOT_RUN",
+    "humanApproval": "NOT_VERIFIED"
+  },
+  "limitations": [
+    "This compares two local desired-state snapshots, not observed live drift.",
+    "The built-in YAML parser supports a strict subset (no anchors, tags, templates, block scalars or nested flow collections); unsupported syntax fails loudly.",
+    "Policy checks are heuristic static rules, not authoritative validation, admission control or compliance certification.",
+    "Admission mutation, defaulting, controllers, image tag drift and real traffic exposure are not modelled.",
+    "Dependency edges come only from the supplied manifests; anything else is reported UNKNOWN.",
+    "No Kubernetes/cloud connection, deployment, destructive command, or rollback was executed."
+  ],
+  "integrity": {
+    "algorithm": "SHA-256",
+    "digest": "cc2959f1ba62cf3ab6c1592e39bd7d6fef927471a9efe9afba40bf92d180cd3a",
+    "meaning": "Unkeyed integrity checksum, NOT a signature or proof of authenticity"
+  }
+}

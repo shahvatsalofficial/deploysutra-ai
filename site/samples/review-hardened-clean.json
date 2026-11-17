@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "2.0",
+  "product": "DeploySutra AI",
+  "productVersion": "0.2.0",
+  "rulesVersion": "2.0",
+  "scope": "OFFLINE_STATIC_K8S",
+  "profile": {
+    "name": "production",
+    "selection": "explicit",
+    "blockOn": [
+      "HIGH",
+      "MEDIUM"
+    ]
+  },
+  "source": {
+    "before": {
+      "path": "fixtures/k8s/hardened.yaml",
+      "sha256": "8d78592456e24b38ef98a6f64ae38a0972d4fc54092fe47021434194359335db",
+      "bytes": 565
+    },
+    "after": {
+      "path": "fixtures/k8s/hardened.yaml",
+      "sha256": "8d78592456e24b38ef98a6f64ae38a0972d4fc54092fe47021434194359335db",
+      "bytes": 565
+    }
+  },
+  "identity": {
+    "kind": "Deployment",
+    "name": "hardened",
+    "namespace": "demo"
+  },
+  "resourceCounts": {
+    "before": 1,
+    "after": 1,
+    "added": 0,
+    "removed": 0,
+    "changed": 0
+  },
+  "resources": [
+    {
+      "resource": "Deployment/demo/hardened",
+      "status": "unchanged",
+      "diffCount": 0
+    }
+  ],
+  "diffs": [],
+  "policyFindings": [],
+  "newPolicyFindings": [],
+  "persistentPolicyFindings": [],
+  "blastMap": {
+    "nodes": [
+      {
+        "id": "Deployment/demo/hardened",
+        "kind": "Deployment",
+        "status": "SUPPLIED"
+      }
+    ],
+    "edges": []
+  },
+  "impactedByChange": [],
+  "blastRadius": [],
+  "rollback": {
+    "source": "user-supplied metadata",
+    "checks": [
+      {
+        "id": "prior_revision",
+        "status": "DECLARED_NOT_VERIFIED",
+        "description": "Evidence of known previous deployable revision"
+      },
+      {
+        "id": "backup_verified",
+        "status": "DECLARED_NOT_VERIFIED",
+        "description": "Independent backup validity evidence"
+      },
+      {
+        "id": "restore_test",
+        "status": "DECLARED_NOT_VERIFIED",
+        "description": "Actual successful restore test evidence"
+      },
+      {
+        "id": "rollback_procedure",
+        "status": "DECLARED_NOT_VERIFIED",
+        "description": "Documented rollback sequence"
+      },
+      {
+        "id": "operator_approval",
+        "status": "DECLARED_NOT_VERIFIED",
+        "description": "Independent authorized operator approval evidence"
+      }
+    ],
+    "ready": false,
+    "reason": "Rollback readiness is not established by declarations alone; a restore drill and human sign-off are required"
+  },
+  "gate": "HUMAN_REVIEW_REQUIRED",
+  "gateReasons": [],
+  "checks": {
+    "manifestParsing": "VERIFIED_STATIC",
+    "policyRules": "VERIFIED_STATIC",
+    "environmentDrift": "NOT_TESTED",
+    "liveRBAC": "NOT_TESTED",
+    "clusterDryRun": "NOT_RUN",
+    "workloadHealth": "NOT_RUN",
+    "realRollback": "NOT_RUN",
+    "humanApproval": "NOT_VERIFIED"
+  },
+  "limitations": [
+    "This compares two local desired-state snapshots, not observed live drift.",
+    "The built-in YAML parser supports a strict subset (no anchors, tags, templates, block scalars or nested flow collections); unsupported syntax fails loudly.",
+    "Policy checks are heuristic static rules, not authoritative validation, admission control or compliance certification.",
+    "Admission mutation, defaulting, controllers, image tag drift and real traffic exposure are not modelled.",
+    "Dependency edges come only from the supplied manifests; anything else is reported UNKNOWN.",
+    "No Kubernetes/cloud connection, deployment, destructive command, or rollback was executed."
+  ],
+  "integrity": {
+    "algorithm": "SHA-256",
+    "digest": "d03513085903b9f29db6634b629fff745c1f7bcd7eb8564c92cee647d6b5aa49",
+    "meaning": "Unkeyed integrity checksum, NOT a signature or proof of authenticity"
+  }
+}

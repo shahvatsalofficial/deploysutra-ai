@@ -10,6 +10,8 @@
 
 **Offline, read-only deployment risk and reversibility analysis for Kubernetes manifests and OpenTofu/Terraform plans.** Compare two versions of your manifests, see every change with its source line, get a sourced list of risks (public exposure, privileged containers, secrets in env vars, scale-to-zero, wildcard RBAC...), see what else is connected, check rollback evidence, and get a report as **HTML, Markdown and JSON**. It never deploys, never touches a cluster, never needs an API key, and **its gate can only say `BLOCKED` or `HUMAN_REVIEW_REQUIRED`. There is no "READY".**
 
+**Docs site: https://shahvatsalofficial.github.io/deploysutra-ai/**
+
 Created and maintained by **Vatsal Shah** · Apache-2.0 · Node.js 20+ · zero runtime dependencies
 
 ```bash

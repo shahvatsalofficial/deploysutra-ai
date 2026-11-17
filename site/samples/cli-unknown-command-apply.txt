@@ -1,0 +1,3 @@
+$ deploysutra apply
+[stderr] DeploySutra: Unknown command apply. Run "deploysutra help".
+[exit 1]

@@ -1,0 +1,11 @@
+$ deploysutra explain DS-K8S-012
+{
+  "id": "DS-K8S-012",
+  "severity": "HIGH",
+  "title": "Secret-like literal in env",
+  "trigger": "env var named like password/secret/token/key with an inline value",
+  "why": "Credentials in manifests leak through Git, logs and diffs. The value is never copied into reports.",
+  "remediation": "Use valueFrom.secretKeyRef or an external secret store; rotate the exposed value.",
+  "falsePositive": "Names such as KEY_PREFIX that hold non-secret data."
+}
+[exit 0]

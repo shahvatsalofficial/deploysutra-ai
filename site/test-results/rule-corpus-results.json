@@ -1,0 +1,31 @@
+{
+  "cases": 50,
+  "positiveCases": 31,
+  "negativeCases": 19,
+  "truePositives": 32,
+  "falsePositives": 0,
+  "falseNegatives": 0,
+  "precision": 1,
+  "recall": 1,
+  "passed": 50,
+  "rulesCovered": [
+    "DS-K8S-001",
+    "DS-K8S-002",
+    "DS-K8S-003",
+    "DS-K8S-004",
+    "DS-K8S-005",
+    "DS-K8S-006",
+    "DS-K8S-007",
+    "DS-K8S-008",
+    "DS-K8S-009",
+    "DS-K8S-010",
+    "DS-K8S-011",
+    "DS-K8S-012",
+    "DS-K8S-013",
+    "DS-K8S-014",
+    "DS-K8S-015",
+    "DS-K8S-016",
+    "DS-K8S-017",
+    "DS-K8S-018"
+  ]
+}

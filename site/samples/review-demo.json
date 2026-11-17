@@ -1,0 +1,567 @@
+{
+  "schemaVersion": "2.0",
+  "product": "DeploySutra AI",
+  "productVersion": "0.2.0",
+  "rulesVersion": "2.0",
+  "scope": "OFFLINE_STATIC_K8S",
+  "profile": {
+    "name": "staging",
+    "selection": "default",
+    "blockOn": [
+      "HIGH"
+    ]
+  },
+  "source": {
+    "before": {
+      "path": "fixtures/k8s/before.yaml",
+      "sha256": "2a65e8ddb12236269d89ceaac35962af1973bc2a6303c3a7180c422e2bb7c441",
+      "bytes": 539
+    },
+    "after": {
+      "path": "fixtures/k8s/after.yaml",
+      "sha256": "c779a5e5df32a215531237fe5201549285d7d28170e2ed8c87af045b92331951",
+      "bytes": 428
+    }
+  },
+  "identity": {
+    "kind": "Deployment",
+    "name": "checkout",
+    "namespace": "demo"
+  },
+  "resourceCounts": {
+    "before": 1,
+    "after": 1,
+    "added": 0,
+    "removed": 0,
+    "changed": 1
+  },
+  "resources": [
+    {
+      "resource": "Deployment/demo/checkout",
+      "status": "changed",
+      "diffCount": 10
+    }
+  ],
+  "diffs": [
+    {
+      "id": "DS-DIFF-19cbdedf9",
+      "resource": "Deployment/demo/checkout",
+      "path": "spec.replicas",
+      "label": "replicas",
+      "risk": "scale",
+      "change": "changed",
+      "before": 3,
+      "after": 0,
+      "redacted": false,
+      "source": "fixtures/k8s/after.yaml",
+      "line": 7,
+      "lineConfidence": "exact",
+      "evidence": "static-manifest-diff",
+      "scope": "desired-state-only"
+    },
+    {
+      "id": "DS-DIFF-8cc19ca7c",
+      "resource": "Deployment/demo/checkout",
+      "path": "spec.strategy.type",
+      "label": "update strategy",
+      "risk": "rollout",
+      "change": "changed",
+      "before": "RollingUpdate",
+      "after": "Recreate",
+      "redacted": false,
+      "source": "fixtures/k8s/after.yaml",
+      "line": 9,
+      "lineConfidence": "exact",
+      "evidence": "static-manifest-diff",
+      "scope": "desired-state-only"
+    },
+    {
+      "id": "DS-DIFF-cd080f1b2",
+      "resource": "Deployment/demo/checkout",
+      "path": "spec.template.spec.containers[checkout].image",
+      "label": "container image",
+      "risk": "image",
+      "change": "changed",
+      "before": "example/checkout:1.0.0",
+      "after": "example/checkout:latest",
+      "redacted": false,
+      "source": "fixtures/k8s/after.yaml",
+      "line": 16,
+      "lineConfidence": "exact",
+      "evidence": "static-manifest-diff",
+      "scope": "desired-state-only"
+    },
+    {
+      "id": "DS-DIFF-21058ece7",
+      "resource": "Deployment/demo/checkout",
+      "path": "spec.template.spec.containers[checkout].resources.limits.cpu",
+      "label": "resource limit",
+      "risk": "other",
+      "change": "removed",
+      "before": "500m",
+      "after": "[absent]",
+      "redacted": false,
+      "source": "fixtures/k8s/before.yaml",
+      "line": 19,
+      "lineConfidence": "exact",
+      "evidence": "static-manifest-diff",
+      "scope": "desired-state-only"
+    },
+    {
+      "id": "DS-DIFF-ecc8fdfaa",
+      "resource": "Deployment/demo/checkout",
+      "path": "spec.template.spec.containers[checkout].resources.limits.memory",
+      "label": "resource limit",
+      "risk": "other",
+      "change": "removed",
+      "before": "256Mi",
+      "after": "[absent]",
+      "redacted": false,
+      "source": "fixtures/k8s/before.yaml",
+      "line": 20,
+      "lineConfidence": "exact",
+      "evidence": "static-manifest-diff",
+      "scope": "desired-state-only"
+    },
+    {
+      "id": "DS-DIFF-65fca347e",
+      "resource": "Deployment/demo/checkout",
+      "path": "spec.template.spec.containers[checkout].securityContext.allowPrivilegeEscalation",
+      "label": "privilege escalation",
+      "risk": "privilege",
+      "change": "changed",
+      "before": false,
+      "after": true,
+      "redacted": false,
+      "source": "fixtures/k8s/after.yaml",
+      "line": 19,
+      "lineConfidence": "exact",
+      "evidence": "static-manifest-diff",
+      "scope": "desired-state-only"
+    },
+    {
+      "id": "DS-DIFF-15154f402",
+      "resource": "Deployment/demo/checkout",
+      "path": "spec.template.spec.containers[checkout].securityContext.privileged",
+      "label": "privileged container",
+      "risk": "privilege",
+      "change": "changed",
+      "before": false,
+      "after": true,
+      "redacted": false,
+      "source": "fixtures/k8s/after.yaml",
+      "line": 18,
+      "lineConfidence": "exact",
+      "evidence": "static-manifest-diff",
+      "scope": "desired-state-only"
+    },
+    {
+      "id": "DS-DIFF-96a279fff",
+      "resource": "Deployment/demo/checkout",
+      "path": "spec.template.spec.containers[checkout].securityContext.runAsUser",
+      "label": "run-as user",
+      "risk": "privilege",
+      "change": "changed",
+      "before": 10001,
+      "after": 0,
+      "redacted": false,
+      "source": "fixtures/k8s/after.yaml",
+      "line": 20,
+      "lineConfidence": "exact",
+      "evidence": "static-manifest-diff",
+      "scope": "desired-state-only"
+    },
+    {
+      "id": "DS-DIFF-ccd0f5919",
+      "resource": "Deployment/demo/checkout",
+      "path": "spec.template.spec.hostNetwork",
+      "label": "host networking",
+      "risk": "exposure",
+      "change": "changed",
+      "before": false,
+      "after": true,
+      "redacted": false,
+      "source": "fixtures/k8s/after.yaml",
+      "line": 13,
+      "lineConfidence": "exact",
+      "evidence": "static-manifest-diff",
+      "scope": "desired-state-only"
+    },
+    {
+      "id": "DS-DIFF-cfe56ec2b",
+      "resource": "Deployment/demo/checkout",
+      "path": "spec.template.spec.serviceAccountName",
+      "label": "service identity",
+      "risk": "identity",
+      "change": "changed",
+      "before": "checkout-readonly",
+      "after": "checkout-admin",
+      "redacted": false,
+      "source": "fixtures/k8s/after.yaml",
+      "line": 12,
+      "lineConfidence": "exact",
+      "evidence": "static-manifest-diff",
+      "scope": "desired-state-only"
+    }
+  ],
+  "policyFindings": [
+    {
+      "id": "DS-K8S-003",
+      "severity": "HIGH",
+      "title": "Host networking",
+      "message": "Host network access enabled",
+      "field": "spec.template.spec.hostNetwork",
+      "resource": "Deployment/demo/checkout",
+      "source": "fixtures/k8s/after.yaml",
+      "line": 13,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Remove hostNetwork or document and isolate the node pool.",
+      "status": "new"
+    },
+    {
+      "id": "DS-K8S-004",
+      "severity": "HIGH",
+      "title": "Privileged container",
+      "message": "Container is privileged",
+      "field": "spec.template.spec.containers.0.securityContext.privileged",
+      "resource": "Deployment/demo/checkout",
+      "source": "fixtures/k8s/after.yaml",
+      "line": 18,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Drop privileged; add only the specific capability needed.",
+      "status": "new"
+    },
+    {
+      "id": "DS-K8S-005",
+      "severity": "HIGH",
+      "title": "Privilege escalation allowed",
+      "message": "Privilege escalation enabled",
+      "field": "spec.template.spec.containers.0.securityContext.allowPrivilegeEscalation",
+      "resource": "Deployment/demo/checkout",
+      "source": "fixtures/k8s/after.yaml",
+      "line": 19,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Set allowPrivilegeEscalation: false.",
+      "status": "new"
+    },
+    {
+      "id": "DS-K8S-006",
+      "severity": "MEDIUM",
+      "title": "Explicit root user",
+      "message": "Container explicitly runs as UID 0",
+      "field": "spec.template.spec.containers.0.securityContext.runAsUser",
+      "resource": "Deployment/demo/checkout",
+      "source": "fixtures/k8s/after.yaml",
+      "line": 20,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Use a non-zero UID.",
+      "status": "new"
+    },
+    {
+      "id": "DS-K8S-007",
+      "severity": "MEDIUM",
+      "title": "Mutable or untagged image",
+      "message": "Unpinned or latest container image",
+      "field": "spec.template.spec.containers.0.image",
+      "resource": "Deployment/demo/checkout",
+      "source": "fixtures/k8s/after.yaml",
+      "line": 16,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Pin an immutable digest.",
+      "status": "new"
+    },
+    {
+      "id": "DS-K8S-008",
+      "severity": "MEDIUM",
+      "title": "No resource limits",
+      "message": "Container has no declared resource limits",
+      "field": "spec.template.spec.containers.0.resources",
+      "resource": "Deployment/demo/checkout",
+      "source": "fixtures/k8s/after.yaml",
+      "line": 15,
+      "lineConfidence": "parent",
+      "evidence": "static-rule",
+      "requirement": "Set cpu and memory limits.",
+      "status": "new"
+    },
+    {
+      "id": "DS-K8S-009",
+      "severity": "HIGH",
+      "title": "Scaled to zero",
+      "message": "Replicas set to zero; the service will have no running instances",
+      "field": "spec.replicas",
+      "resource": "Deployment/demo/checkout",
+      "source": "fixtures/k8s/after.yaml",
+      "line": 7,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Confirm intent and traffic drain plan.",
+      "status": "new"
+    },
+    {
+      "id": "DS-K8S-016",
+      "severity": "LOW",
+      "title": "No readiness probe",
+      "message": "Container has no readinessProbe",
+      "field": "spec.template.spec.containers.0",
+      "resource": "Deployment/demo/checkout",
+      "source": "fixtures/k8s/after.yaml",
+      "line": 15,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Add a readiness probe.",
+      "status": "persistent"
+    },
+    {
+      "id": "DS-K8S-017",
+      "severity": "LOW",
+      "title": "Non-root not enforced",
+      "message": "runAsNonRoot is not enforced",
+      "field": "spec.template.spec.containers.0.securityContext",
+      "resource": "Deployment/demo/checkout",
+      "source": "fixtures/k8s/after.yaml",
+      "line": 17,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Set runAsNonRoot: true.",
+      "status": "persistent"
+    }
+  ],
+  "newPolicyFindings": [
+    {
+      "id": "DS-K8S-003",
+      "severity": "HIGH",
+      "title": "Host networking",
+      "message": "Host network access enabled",
+      "field": "spec.template.spec.hostNetwork",
+      "resource": "Deployment/demo/checkout",
+      "source": "fixtures/k8s/after.yaml",
+      "line": 13,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Remove hostNetwork or document and isolate the node pool.",
+      "status": "new"
+    },
+    {
+      "id": "DS-K8S-004",
+      "severity": "HIGH",
+      "title": "Privileged container",
+      "message": "Container is privileged",
+      "field": "spec.template.spec.containers.0.securityContext.privileged",
+      "resource": "Deployment/demo/checkout",
+      "source": "fixtures/k8s/after.yaml",
+      "line": 18,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Drop privileged; add only the specific capability needed.",
+      "status": "new"
+    },
+    {
+      "id": "DS-K8S-005",
+      "severity": "HIGH",
+      "title": "Privilege escalation allowed",
+      "message": "Privilege escalation enabled",
+      "field": "spec.template.spec.containers.0.securityContext.allowPrivilegeEscalation",
+      "resource": "Deployment/demo/checkout",
+      "source": "fixtures/k8s/after.yaml",
+      "line": 19,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Set allowPrivilegeEscalation: false.",
+      "status": "new"
+    },
+    {
+      "id": "DS-K8S-006",
+      "severity": "MEDIUM",
+      "title": "Explicit root user",
+      "message": "Container explicitly runs as UID 0",
+      "field": "spec.template.spec.containers.0.securityContext.runAsUser",
+      "resource": "Deployment/demo/checkout",
+      "source": "fixtures/k8s/after.yaml",
+      "line": 20,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Use a non-zero UID.",
+      "status": "new"
+    },
+    {
+      "id": "DS-K8S-007",
+      "severity": "MEDIUM",
+      "title": "Mutable or untagged image",
+      "message": "Unpinned or latest container image",
+      "field": "spec.template.spec.containers.0.image",
+      "resource": "Deployment/demo/checkout",
+      "source": "fixtures/k8s/after.yaml",
+      "line": 16,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Pin an immutable digest.",
+      "status": "new"
+    },
+    {
+      "id": "DS-K8S-008",
+      "severity": "MEDIUM",
+      "title": "No resource limits",
+      "message": "Container has no declared resource limits",
+      "field": "spec.template.spec.containers.0.resources",
+      "resource": "Deployment/demo/checkout",
+      "source": "fixtures/k8s/after.yaml",
+      "line": 15,
+      "lineConfidence": "parent",
+      "evidence": "static-rule",
+      "requirement": "Set cpu and memory limits.",
+      "status": "new"
+    },
+    {
+      "id": "DS-K8S-009",
+      "severity": "HIGH",
+      "title": "Scaled to zero",
+      "message": "Replicas set to zero; the service will have no running instances",
+      "field": "spec.replicas",
+      "resource": "Deployment/demo/checkout",
+      "source": "fixtures/k8s/after.yaml",
+      "line": 7,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Confirm intent and traffic drain plan.",
+      "status": "new"
+    }
+  ],
+  "persistentPolicyFindings": [
+    {
+      "id": "DS-K8S-016",
+      "severity": "LOW",
+      "title": "No readiness probe",
+      "message": "Container has no readinessProbe",
+      "field": "spec.template.spec.containers.0",
+      "resource": "Deployment/demo/checkout",
+      "source": "fixtures/k8s/after.yaml",
+      "line": 15,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Add a readiness probe.",
+      "status": "persistent"
+    },
+    {
+      "id": "DS-K8S-017",
+      "severity": "LOW",
+      "title": "Non-root not enforced",
+      "message": "runAsNonRoot is not enforced",
+      "field": "spec.template.spec.containers.0.securityContext",
+      "resource": "Deployment/demo/checkout",
+      "source": "fixtures/k8s/after.yaml",
+      "line": 17,
+      "lineConfidence": "exact",
+      "evidence": "static-rule",
+      "requirement": "Set runAsNonRoot: true.",
+      "status": "persistent"
+    }
+  ],
+  "blastMap": {
+    "nodes": [
+      {
+        "id": "Deployment/demo/checkout",
+        "kind": "Deployment",
+        "status": "SUPPLIED"
+      },
+      {
+        "id": "ServiceAccount/demo/checkout-admin",
+        "kind": "ServiceAccount",
+        "status": "UNKNOWN",
+        "note": "Referenced but not in the supplied manifests; ownership and state unknown"
+      }
+    ],
+    "edges": [
+      {
+        "from": "Deployment/demo/checkout",
+        "to": "ServiceAccount/demo/checkout-admin",
+        "relation": "runs-as",
+        "certainty": "declared-target-not-supplied"
+      }
+    ]
+  },
+  "impactedByChange": [
+    {
+      "changed": "Deployment/demo/checkout",
+      "affected": "ServiceAccount/demo/checkout-admin",
+      "relation": "this runs-as ServiceAccount",
+      "certainty": "declared-target-not-supplied"
+    }
+  ],
+  "blastRadius": [
+    "Replica count changed: verify availability and service scaling",
+    "Update strategy changed: confirm the surge/unavailable behaviour is safe for this service",
+    "Workload image changed: check health signals, compatibility, and rollout readiness",
+    "Privilege-related field changed: confirm the container really needs it",
+    "Service identity changed: independently verify RBAC and external permissions",
+    "High-risk static rule triggered; deployment approval must remain blocked"
+  ],
+  "rollback": {
+    "source": "user-supplied metadata",
+    "checks": [
+      {
+        "id": "prior_revision",
+        "status": "DECLARED_NOT_VERIFIED",
+        "description": "Evidence of known previous deployable revision"
+      },
+      {
+        "id": "backup_verified",
+        "status": "MISSING",
+        "description": "Independent backup validity evidence"
+      },
+      {
+        "id": "restore_test",
+        "status": "MISSING",
+        "description": "Actual successful restore test evidence"
+      },
+      {
+        "id": "rollback_procedure",
+        "status": "DECLARED_NOT_VERIFIED",
+        "description": "Documented rollback sequence"
+      },
+      {
+        "id": "operator_approval",
+        "status": "MISSING",
+        "description": "Independent authorized operator approval evidence"
+      }
+    ],
+    "ready": false,
+    "reason": "Rollback readiness is not established by declarations alone; a restore drill and human sign-off are required"
+  },
+  "gate": "BLOCKED",
+  "gateReasons": [
+    "New HIGH finding DS-K8S-003 on Deployment/demo/checkout",
+    "New HIGH finding DS-K8S-004 on Deployment/demo/checkout",
+    "New HIGH finding DS-K8S-005 on Deployment/demo/checkout",
+    "New HIGH finding DS-K8S-009 on Deployment/demo/checkout",
+    "Rollback evidence missing: backup_verified, restore_test, operator_approval"
+  ],
+  "checks": {
+    "manifestParsing": "VERIFIED_STATIC",
+    "policyRules": "VERIFIED_STATIC",
+    "environmentDrift": "NOT_TESTED",
+    "liveRBAC": "NOT_TESTED",
+    "clusterDryRun": "NOT_RUN",
+    "workloadHealth": "NOT_RUN",
+    "realRollback": "NOT_RUN",
+    "humanApproval": "NOT_VERIFIED"
+  },
+  "limitations": [
+    "This compares two local desired-state snapshots, not observed live drift.",
+    "The built-in YAML parser supports a strict subset (no anchors, tags, templates, block scalars or nested flow collections); unsupported syntax fails loudly.",
+    "Policy checks are heuristic static rules, not authoritative validation, admission control or compliance certification.",
+    "Admission mutation, defaulting, controllers, image tag drift and real traffic exposure are not modelled.",
+    "Dependency edges come only from the supplied manifests; anything else is reported UNKNOWN.",
+    "No Kubernetes/cloud connection, deployment, destructive command, or rollback was executed."
+  ],
+  "integrity": {
+    "algorithm": "SHA-256",
+    "digest": "9715f8ddd2df3f7ce7bf70798a567306bdef9d68d9bc57c58d827f5825bbe05b",
+    "meaning": "Unkeyed integrity checksum, NOT a signature or proof of authenticity"
+  }
+}

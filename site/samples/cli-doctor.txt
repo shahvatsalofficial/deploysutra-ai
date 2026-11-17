@@ -1,0 +1,22 @@
+$ deploysutra doctor
+{
+  "product": "DeploySutra AI",
+  "version": "0.2.0",
+  "node": "v24.15.0",
+  "nodeSupported": true,
+  "platform": "win32",
+  "offline": true,
+  "cloudAccess": "NOT_USED",
+  "deploymentCommandsAvailable": false,
+  "subprocessExecution": "NONE in analysis; only the audit command runs this package own tests",
+  "rules": 19,
+  "rulesVersion": "2.0",
+  "profiles": [
+    "development",
+    "staging",
+    "production"
+  ],
+  "hostAdapters": "skill-copy only; native activation unverified",
+  "apiKeyRequired": false
+}
+[exit 0]
